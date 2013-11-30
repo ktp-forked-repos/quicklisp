@@ -1,0 +1,5 @@
+@deffn {Function} {antik:new-units} pq @&optional sysunits-additional-units stream
+@findex antik:new-units
+Format the physical dimension quantity in units different than the default.
+   Note that sysunits-additional-units must be a list.
+@end deffn

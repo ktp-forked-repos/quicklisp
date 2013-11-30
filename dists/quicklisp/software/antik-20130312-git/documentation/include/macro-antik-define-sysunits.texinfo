@@ -1,0 +1,5 @@
+@deffn {Macro} {antik:define-sysunits} system-name units @&optional base-sysunits docstring
+@findex antik:define-sysunits
+Make a system of units with the given name and units, optionally
+   agumenting the existing system of units base-sysunits.
+@end deffn

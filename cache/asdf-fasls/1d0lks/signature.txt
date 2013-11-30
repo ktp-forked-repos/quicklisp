@@ -1,0 +1,4 @@
+lisp-implementation-type: Armed Bear Common Lisp
+lisp-implementation-version: 0.19.1
+machine-type: I386
+machine-version: Intel(R) Pentium(R) Dual  CPU  E2160  @ 1.80GHz

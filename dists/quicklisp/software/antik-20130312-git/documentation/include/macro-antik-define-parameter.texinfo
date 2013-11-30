@@ -1,0 +1,4 @@
+@deffn {Macro} {antik:define-parameter} category name default type description
+@findex antik:define-parameter
+Define the parameter name in category.
+@end deffn

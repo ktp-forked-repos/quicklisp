@@ -1,0 +1,4 @@
+lisp-implementation-type: CMU Common Lisp
+lisp-implementation-version: 2013-04-07 13:54:39 (20A Unicode)
+machine-type: X86
+machine-version: X86

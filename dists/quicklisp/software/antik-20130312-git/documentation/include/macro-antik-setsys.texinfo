@@ -1,0 +1,5 @@
+@deffn {Macro} {antik:setsys} symbol sysunits @&rest additional-units
+@findex antik:setsys
+Set the symbol macro symbol to make the system of units sysunits default.
+   additional-units may be useform@{NIL@} to augment the current default system.
+@end deffn

@@ -1,0 +1,192 @@
+This is clx.info, produced by makeinfo version 4.13 from clx.texinfo.
+
+INFO-DIR-SECTION lisp
+START-INFO-DIR-ENTRY
+* CLX: (clx).           Common LISP X Interface
+END-INFO-DIR-ENTRY
+
+   The Common LISP X Interface (CLX)
+
+   Copyright (C) 1988, 1989 Texas Instruments Incorporated
+
+     Permission is granted to any individual or institution to use,
+     copy, modify and distribute this document, provided that this
+     complete copyright and permission notice is maintained, intact, in
+     all copies and supporting documentation. Texas Instruments
+     Incorporated makes no representations about the suitability of
+     this document or the software described herein for any purpose. It
+     is provided "as is" without express or implied warranty.
+
+
+Indirect:
+clx.info-1: 754
+clx.info-2: 298626
+
+Tag Table:
+(Indirect)
+Node: Top754
+Node: Acknowledgments5013
+Node: Introduction to CLX6233
+Node: The X Window System6842
+Node: Windows10454
+Node: Input Events12656
+Node: A Quick Tour of CLX14577
+Node: A Simple Menu16359
+Node: Displaying the Menu22673
+Node: Menu Input29103
+Node: The Main Program32698
+Node: Debugging With CLX35225
+Node: Naming and Argument Conventions37180
+Node: Programming Considerations38857
+Node: Data Types40649
+Ref: color45675
+Ref: colormap45786
+Ref: cursor45899
+Ref: event-mask46032
+Ref: display46863
+Ref: font50986
+Ref: gcontext51343
+Ref: int1653558
+Ref: pixmap55280
+Ref: screen58447
+Ref: window62132
+Node: Displays62594
+Node: Opening the Display63553
+Node: Display Attributes66977
+Ref: display-bitmap-format68468
+Node: Managing the Output Buffer80235
+Ref: display-force-output81940
+Ref: display-finish-output82087
+Node: Closing the Display82341
+Node: Screens83162
+Node: Screens and Visuals83328
+Node: Screen Attributes85579
+Node: Windows and Pixmaps90958
+Node: Drawables91263
+Node: Creating Windows92515
+Ref: create-window93167
+Node: Window Attributes95552
+Ref: with-state112985
+Node: Stacking Order115760
+Node: Window Hierarchy117763
+Node: Mapping Windows122006
+Ref: map-window123454
+Node: Destroying Windows125832
+Node: Pixmaps127452
+Node: Graphics Contexts130183
+Node: Creating Graphics Contexts133215
+Node: Graphics Context Attributes136881
+Node: Copying Graphics Contexts170436
+Node: Destroying Graphics Contexts171754
+Node: Graphics Context Cache172234
+Ref: with-gcontext173128
+Node: Graphic Operations174420
+Node: Area and Plane Operations174969
+Node: Drawing Points181624
+Node: Drawing Lines183935
+Node: Drawing Rectangles188567
+Node: Drawing Arcs190836
+Node: Drawing Text194908
+Ref: draw-image-glyphs203839
+Node: Images208605
+Node: Image Types209451
+Node: Basic Images209828
+Node: XY-Format Images212631
+Node: Z-Format Images213259
+Node: Image Functions214196
+Node: Image Files222116
+Node: Direct Image Transfer223155
+Node: Font and Characters227531
+Node: Opening Fonts230357
+Node: Listing Fonts231655
+Node: Font Attributes234723
+Node: Chracter Attributes242677
+Node: Querying Text Size245474
+Ref: text-extents245888
+Node: Colors248834
+Node: Colormaps and Colors249020
+Node: Color Functions251257
+Node: Colormap Functions253483
+Node: Creating Colormaps256271
+Node: Installing Colormaps259064
+Ref: install-colormap259517
+Node: Allocating Colors260874
+Node: Finding Colors267834
+Node: Changing Colors269463
+Node: Colormap Attributes271530
+Node: Cursors272750
+Node: Creating Cursors274048
+Node: Cursor Functions277893
+Node: Cursor Attributes279032
+Node: Atoms280238
+Node: Atoms (Atoms)280452
+Node: Properties284739
+Ref: get-property287798
+Node: Selections290996
+Node: Events and Input298626
+Node: Selecting Events301686
+Node: Processing Events306034
+Ref: event-case309262
+Node: Managing the Event Queue313140
+Ref: with-event-queue315655
+Node: Sending Events315859
+Node: Pointer Position318859
+Node: Managing Input Focus326764
+Node: Grabbing the Pointer329424
+Node: Grabbing a Button335097
+Node: Grabbing the Keyboard338052
+Node: Grabbing a Key341753
+Node: Event Types344700
+Node: Keyboard and Pointer Events346550
+Ref: :enter-notify353069
+Node: Input Focus Events359521
+Node: Keyboard and Pointer State Events367240
+Node: Exposure Events369487
+Ref: :exposure370201
+Node: Window State Events375083
+Node: Structure Control Events385413
+Node: Client Communications Events391258
+Node: Declaring Event Types398441
+Node: Releasing Queued Events400236
+Node: Resources406735
+Node: Resource Binings408091
+Node: Basic Resource Database Functions410703
+Node: Accessing Resource Values413349
+Node: Complete Names and Classes414490
+Node: Matching Resource Names417557
+Node: Resource Access Functions419484
+Node: Resource Database Files422899
+Node: Control Functions425561
+Node: Grabbing the Server425858
+Node: Pointer Control427203
+Node: Keyboard Control429684
+Node: Keyboard Encodings435850
+Node: Keycodes and Keysyms436967
+Node: Keyboard Mapping439679
+Node: Using Keycodes and Keysyms443263
+Node: Client Termination444894
+Node: Managing Host Access451221
+Node: Screen Saver454104
+Node: Extensions457524
+Node: Extensions (Extensions)457887
+Node: SHAPE - The X11 Nonrectangular Window Shape Extension460290
+Node: RENDER - A new rendering system for X11460628
+Node: Picture formats461557
+Node: The picture object463913
+Node: Glyphs and Glyphsets466007
+Node: Using glyphs469154
+Node: Errors (Extensions)470016
+Node: DPMS - The X11 Display Power Management Signaling Extension470194
+Node: BIG-REQUESTS - Big Requests Extension473342
+Node: Errors473701
+Node: Introduction (Errors)473820
+Ref: request-error482481
+Ref: resource-error483040
+Ref: x-error485921
+Node: Undocumented486018
+Ref: set-close-down-mode488831
+Node: Glossary490752
+Node: Function Index520856
+Node: Type Index558548
+
+End Tag Table

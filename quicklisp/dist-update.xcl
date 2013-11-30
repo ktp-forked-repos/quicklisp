@@ -1,0 +1,489 @@
+; -*- Mode: Lisp -*-
+; Compiler policy: safety 1, space 1, speed 1, debug 1
+; SYSTEM:*FORCE-FULL-CALLS* is NIL
+; SYSTEM:*FORCE-TYPE-CHECKS* is NIL
+
+(SYSTEM:INIT-FASL COMMON-LISP:NIL)
+
+(COMMON-LISP:SETQ SYSTEM:*SOURCE-FILE* #P"/home/wbooze/quicklisp/quicklisp/dist-update.lisp")
+
+(SYSTEM:%IN-PACKAGE "QL-DIST")
+
+(LET ((#$G17937 (ENSURE-GENERIC-FUNCTION 'AVAILABLE-UPDATE :LAMBDA-LIST '(DIST) ':DOCUMENTATION
+ '"If an update is available for DIST, return the
+  update as an uninstalled dist object. Otherwise, return NIL."))) #$G17937)
+
+(LET ((#$G17938 (ENSURE-GENERIC-FUNCTION 'UPDATE-RELEASE-DIFFERENCES :LAMBDA-LIST
+ '(OLD-DIST NEW-DIST) ':DOCUMENTATION '"Compare OLD-DIST to NEW-DIST and return three lists
+  as multiple values: new releases (present in NEW-DIST but not
+  OLD-DIST), changed releases (present in both dists but different in
+  some way), and removed releases (present in OLD-DIST but not
+  NEW-DIST). The list of changed releases is a list of two-element
+  lists, with each two-element list having first the old release
+  object and then the new release object."))) #$G17938)
+
+(LET ((#$G17939 (ENSURE-GENERIC-FUNCTION 'SHOW-UPDATE-REPORT :LAMBDA-LIST '(OLD-DIST
+ NEW-DIST) ':DOCUMENTATION '"Display a description of the update from OLD-DIST
+  to NEW-DIST."))) #$G17939)
+
+(LET ((#$G17940 (ENSURE-GENERIC-FUNCTION 'UPDATE-IN-PLACE :LAMBDA-LIST '(OLD-DIST
+ NEW-DIST) ':DOCUMENTATION '"Update OLD-DIST to NEW-DIST in place."))) #$G17940)
+
+(SYSTEM::ENSURE-METHOD 'AVAILABLE-UPDATE :LAMBDA-LIST '(DIST) :QUALIFIERS 'NIL :SPECIALIZERS
+ (LIST 'DIST) :FUNCTION (COMPILER::LOAD-COMPILED-LAMBDA-FORM '(MOP:METHOD-FUNCTION
+ AVAILABLE-UPDATE (DIST)) '(#6%U‰åƒì #3(:CALL 5 "RT_current_thread") #14%‰Eä‹E‹@ÿ‰EüPh
+ #3(:CONSTANT 4 DISTINFO-SUBSCRIPTION-URL) #3(:CALL 5 "RT_fast_call_symbol_1") #7%ƒÄ‰Eøh
+ #3(:CONSTANT 4 "tmp/distinfo-update/distinfo.txt") #1%h #3(:CONSTANT 4 QMERGE) #3(:CALL
+ 5 "RT_fast_call_symbol_1") #7%ƒÄ‰Eôh #3(:CONSTANT 4 "tmp/distinfo-update/") #1%h
+ #3(:CONSTANT 4 QMERGE) #3(:CALL 5 "RT_fast_call_symbol_1") #17%ƒÄ‰Eð‹EäÆ@,ÿÿuðh
+ #3(:CONSTANT 4 PROBE-DIRECTORY) #3(:CALL 5 "RT_fast_call_symbol_1") #11%ƒÄ‹UäÆB,ÿ=
+ #3(:CONSTANT 4 NIL) #3(:JMP-SHORT 2 (:Z #$G17946)) #1%h #3(:CONSTANT 4 "tmp/distinfo-update/")
+ #1%h #3(:CONSTANT 4 QMERGE) #3(:CALL 5 "RT_fast_call_symbol_1") #12%ƒÄP‹EäÆ@,ÿh
+ #3(:CONSTANT 4 DELETE-DIRECTORY-TREE) #3(:CALL 5 "RT_fast_call_symbol_1") #3%ƒÄ
+ #3(:LABEL 0 #$G17946) #11%‹EäÆ@,ÿ‹Eø= #3(:CONSTANT 4 NIL) #3(:JMP 6 (:Z #$G17951))
+ #4%ÿuôh #3(:CONSTANT 4 ENSURE-DIRECTORIES-EXIST) #3(:CALL 5 "RT_fast_call_symbol_1")
+ #4%ƒÄh #3(:CONSTANT 4 T) #1%h #3(:CONSTANT 4 :QUIETLY) #7%ÿuôÿuøh #3(:CONSTANT 4
+ FETCH) #3(:CALL 5 "RT_fast_call_symbol_4") #14%ƒÄ‹EäÆ@,ÿÿuôh #3(:CONSTANT 4 MAKE-DIST-FROM-FILE)
+ #3(:CALL 5 "RT_fast_call_symbol_1") #17%ƒÄ‰Eì‹EäÆ@,ÿƒì ¸ #3(:CONSTANT 4 :NAME) #4%‰$¸
+ #3(:CONSTANT 4 NIL) #5%‰D$¸ #3(:CONSTANT 4 :TYPE) #5%‰D$¸ #3(:CONSTANT 4 NIL) #5%‰D$¸
+ #3(:CONSTANT 4 :VERSION) #5%‰D$¸ #3(:CONSTANT 4 NIL) #5%‰D$¸ #3(:CONSTANT 4 :DEFAULTS)
+ #15%‰D$‹Eô‰D$Tj¸ #3(:FUNCTION 4 MAKE-PATHNAME) #1%P #3(:CALL 5 "RT_fast_call_function")
+ #13%ƒÄƒÄ ‰Eèƒìh #3(:CONSTANT 4 BASE-DIRECTORY) #3(:CALL 5 "RT_symbol_setf_function")
+ #20%ƒÄ‰$‹Eè‰D$‹Eì‰D$ #3(:CALL 5 "RT_fast_call_function_2") #17%ƒÄ‹EäÆ@,ÿƒìÿuüh
+ #3(:CONSTANT 4 NAME) #3(:CALL 5 "RT_fast_call_symbol_1") #10%ƒÄ‰$ÿuìh #3(:CONSTANT
+ 4 NAME) #3(:CALL 5 "RT_fast_call_symbol_1") #14%ƒÄ‰D$‹EäÆ@,ÿ #3(:CALL 5 SYSTEM:TWO-ARG-STRING=)
+ #11%ƒÄ‹UäÆB,ÿ= #3(:CONSTANT 4 NIL) #3(:JMP-SHORT 2 (:E #$G17950)) #7%ƒìÿuüh #3(:CONSTANT
+ 4 VERSION) #3(:CALL 5 "RT_fast_call_symbol_1") #10%ƒÄ‰$ÿuìh #3(:CONSTANT 4 VERSION)
+ #3(:CALL 5 "RT_fast_call_symbol_1") #15%ƒÄ‰D$‹EäÆ@,ÿh #3(:CONSTANT 4 STRING/=)
+ #3(:CALL 5 "RT_fast_call_symbol_2") #11%ƒÄ‹UäÆB,ÿ= #3(:CONSTANT 4 NIL) #3(:JMP-SHORT
+ 2 (:E #$G17950)) #5%‹EìÉÃ #3(:LABEL 0 #$G17950) #1%¸ #3(:CONSTANT 4 NIL) #2%ÉÃ #3(:LABEL
+ 0 #$G17951) #1%¸ #3(:CONSTANT 4 NIL) #2%ÉÃ) 'NIL 2 2 '((-1 . DIST) (-2 . URL) (-3
+ . TARGET) (-4 . UPDATE-DIRECTORY) (-5 . NEW) (-6 . #$G17942) (-7 . #$THREAD-17945)
+ (3 . #$NEXT-METHOD-LIST-17941) (2 . #$GF-ARGS-VAR)) 971) :FAST-FUNCTION (COMPILER::LOAD-COMPILED-LAMBDA-FORM
+ '(SYSTEM:METHOD-FAST-FUNCTION AVAILABLE-UPDATE (DIST)) '(#6%U‰åƒì #3(:CALL 5 "RT_current_thread")
+ #7%‰Eèÿuh #3(:CONSTANT 4 DISTINFO-SUBSCRIPTION-URL) #3(:CALL 5 "RT_fast_call_symbol_1")
+ #7%ƒÄ‰Eüh #3(:CONSTANT 4 "tmp/distinfo-update/distinfo.txt") #1%h #3(:CONSTANT 4
+ QMERGE) #3(:CALL 5 "RT_fast_call_symbol_1") #7%ƒÄ‰Eøh #3(:CONSTANT 4 "tmp/distinfo-update/")
+ #1%h #3(:CONSTANT 4 QMERGE) #3(:CALL 5 "RT_fast_call_symbol_1") #17%ƒÄ‰Eô‹EèÆ@,ÿÿuôh
+ #3(:CONSTANT 4 PROBE-DIRECTORY) #3(:CALL 5 "RT_fast_call_symbol_1") #11%ƒÄ‹UèÆB,ÿ=
+ #3(:CONSTANT 4 NIL) #3(:JMP-SHORT 2 (:Z #$G17958)) #1%h #3(:CONSTANT 4 "tmp/distinfo-update/")
+ #1%h #3(:CONSTANT 4 QMERGE) #3(:CALL 5 "RT_fast_call_symbol_1") #12%ƒÄP‹EèÆ@,ÿh
+ #3(:CONSTANT 4 DELETE-DIRECTORY-TREE) #3(:CALL 5 "RT_fast_call_symbol_1") #3%ƒÄ
+ #3(:LABEL 0 #$G17958) #11%‹EèÆ@,ÿ‹Eü= #3(:CONSTANT 4 NIL) #3(:JMP 6 (:Z #$G17960))
+ #4%ÿuøh #3(:CONSTANT 4 ENSURE-DIRECTORIES-EXIST) #3(:CALL 5 "RT_fast_call_symbol_1")
+ #4%ƒÄh #3(:CONSTANT 4 T) #1%h #3(:CONSTANT 4 :QUIETLY) #7%ÿuøÿuüh #3(:CONSTANT 4
+ FETCH) #3(:CALL 5 "RT_fast_call_symbol_4") #14%ƒÄ‹EèÆ@,ÿÿuøh #3(:CONSTANT 4 MAKE-DIST-FROM-FILE)
+ #3(:CALL 5 "RT_fast_call_symbol_1") #17%ƒÄ‰Eð‹EèÆ@,ÿƒì ¸ #3(:CONSTANT 4 :NAME) #4%‰$¸
+ #3(:CONSTANT 4 NIL) #5%‰D$¸ #3(:CONSTANT 4 :TYPE) #5%‰D$¸ #3(:CONSTANT 4 NIL) #5%‰D$¸
+ #3(:CONSTANT 4 :VERSION) #5%‰D$¸ #3(:CONSTANT 4 NIL) #5%‰D$¸ #3(:CONSTANT 4 :DEFAULTS)
+ #15%‰D$‹Eø‰D$Tj¸ #3(:FUNCTION 4 MAKE-PATHNAME) #1%P #3(:CALL 5 "RT_fast_call_function")
+ #13%ƒÄƒÄ ‰Eìƒìh #3(:CONSTANT 4 BASE-DIRECTORY) #3(:CALL 5 "RT_symbol_setf_function")
+ #20%ƒÄ‰$‹Eì‰D$‹Eð‰D$ #3(:CALL 5 "RT_fast_call_function_2") #17%ƒÄ‹EèÆ@,ÿƒìÿuh
+ #3(:CONSTANT 4 NAME) #3(:CALL 5 "RT_fast_call_symbol_1") #10%ƒÄ‰$ÿuðh #3(:CONSTANT
+ 4 NAME) #3(:CALL 5 "RT_fast_call_symbol_1") #14%ƒÄ‰D$‹EèÆ@,ÿ #3(:CALL 5 SYSTEM:TWO-ARG-STRING=)
+ #11%ƒÄ‹UèÆB,ÿ= #3(:CONSTANT 4 NIL) #3(:JMP-SHORT 2 (:E #$G17962)) #7%ƒìÿuh #3(:CONSTANT
+ 4 VERSION) #3(:CALL 5 "RT_fast_call_symbol_1") #10%ƒÄ‰$ÿuðh #3(:CONSTANT 4 VERSION)
+ #3(:CALL 5 "RT_fast_call_symbol_1") #15%ƒÄ‰D$‹EèÆ@,ÿh #3(:CONSTANT 4 STRING/=)
+ #3(:CALL 5 "RT_fast_call_symbol_2") #11%ƒÄ‹UèÆB,ÿ= #3(:CONSTANT 4 NIL) #3(:JMP-SHORT
+ 2 (:E #$G17962)) #3%‹Eð #3(:JMP-SHORT 2 (T #$G17961)) #3(:LABEL 0 #$G17962) #1%¸
+ #3(:CONSTANT 4 NIL) #3(:JMP-SHORT 2 (T #$G17961)) #3(:LABEL 0 #$G17960) #1%¸ #3(:CONSTANT
+ 4 NIL) #3(:LABEL 0 #$G17961) #2%ÉÃ) 'NIL 1 1 '((-1 . URL) (-2 . TARGET) (-3 . UPDATE-DIRECTORY)
+ (-4 . NEW) (-5 . #$G17952) (-6 . #$THREAD-17955) (2 . DIST)) 971))
+
+(MULTIPLE-VALUE-BIND (COMPILER::FINAL-CODE COMPILER::FINAL-CONSTANTS) (COMPILER::GENERATE-CODE-VECTOR
+ '(#6%U‰åƒì #3(:CALL 5 "RT_current_thread") #23%‰Eüƒì‹E‰$‹M‹	‹‰D$ #3(:CALL
+ 5 CONS) #14%ƒÄP‹M‹	‰XÉÃ) 'NIL) (SYSTEM:SET-FDEFINITION '#$ANONYMOUS-LAMBDA-17979
+ (SYSTEM:MAKE-CLOSURE-TEMPLATE-FUNCTION '#$ANONYMOUS-LAMBDA-17979 COMPILER::FINAL-CODE
+ 2 2 COMPILER::FINAL-CONSTANTS)))
+
+(MULTIPLE-VALUE-BIND (COMPILER::FINAL-CODE COMPILER::FINAL-CONSTANTS) (COMPILER::GENERATE-CODE-VECTOR
+ '(#6%U‰åƒì #3(:CALL 5 "RT_current_thread") #23%‰Eüƒì‹E‰$‹M‹	‹‰D$ #3(:CALL
+ 5 CONS) #14%ƒÄP‹M‹	‰XÉÃ) 'NIL) (SYSTEM:SET-FDEFINITION '#$ANONYMOUS-LAMBDA-18012
+ (SYSTEM:MAKE-CLOSURE-TEMPLATE-FUNCTION '#$ANONYMOUS-LAMBDA-18012 COMPILER::FINAL-CODE
+ 2 2 COMPILER::FINAL-CONSTANTS)))
+
+(SYSTEM::ENSURE-METHOD 'UPDATE-RELEASE-DIFFERENCES :LAMBDA-LIST '(OLD-DIST NEW-DIST)
+ :QUALIFIERS 'NIL :SPECIALIZERS (LIST 'DIST 'DIST) :FUNCTION (COMPILER::LOAD-COMPILED-LAMBDA-FORM
+ '(MOP:METHOD-FUNCTION UPDATE-RELEASE-DIFFERENCES (DIST DIST)) '(#5%U‰åj #3(:CALL
+ 5 "RT_allocate_closure_data_vector") #7%ƒÄPƒì8 #3(:CALL 5 "RT_current_thread") #28%‰EÄ‹E‹@ÿ‰Eø‹E‹@‹@ÿ‰Eôÿuøh
+ #3(:CONSTANT 4 PROVIDED-RELEASES) #3(:CALL 5 "RT_fast_call_symbol_1") #10%ƒÄ‰Eðÿuôh
+ #3(:CONSTANT 4 PROVIDED-RELEASES) #3(:CALL 5 "RT_fast_call_symbol_1") #7%ƒÄ‰Eì¸
+ #3(:CONSTANT 4 NIL) #4%‰Eè¸ #3(:CONSTANT 4 NIL) #4%‰Eäh #3(:CONSTANT 4 NIL) #3(:CALL
+ 5 "RT_make_value_cell_1") #9%ƒÄ‹Uü‰h #3(:CONSTANT 4 EQUALP) #1%h #3(:CONSTANT 4
+ :TEST) #1%h #3(:CONSTANT 4 MAKE-HASH-TABLE) #3(:CALL 5 "RT_fast_call_symbol_2") #19%ƒÄ‰Eà‹EÄÆ@,ÿ‹Eð‰EÜ
+ #3(:LABEL 0 #$G17972) #4%‹EÜ= #3(:CONSTANT 4 NIL) #3(:JMP-SHORT 2 (:E #$G17987))
+ #6%P$<X #3(:JMP 6 (:NE #$G17986)) #25%‹EÜ‹@ÿ‰EØ‹EÜ‹@‰EÜƒìÿuØh #3(:CONSTANT 4
+ NAME) #3(:CALL 5 "RT_fast_call_symbol_1") #27%ƒÄ‰$‹Eà‰D$‹EØ‰D$‹EÄÆ@,ÿ #3(:CALL
+ 5 SYSTEM:PUTHASH3) #3%ƒÄ #3(:JMP-SHORT 2 (T #$G17972)) #3(:LABEL 0 #$G17987) #1%¸
+ #3(:CONSTANT 4 NIL) #6%‹Eì‰EÔ #3(:LABEL 0 #$G17977) #4%‹EÔ= #3(:CONSTANT 4 NIL) #3(:JMP
+ 6 (:E #$G17992)) #6%P$<X #3(:JMP 6 (:NE #$G17986)) #19%‹@ÿ‰EÐ‹EÔ‹@‰EÔÿuÐh #3(:CONSTANT
+ 4 NAME) #3(:CALL 5 "RT_fast_call_symbol_1") #13%ƒÄ‰EÌÿuàPÿuÄ #3(:CALL 5 "RT_gethash2")
+ #19%ƒÄ‰EÈ‹EÄÆ@,ÿÿuàÿuÌ #3(:CALL 5 REMHASH) #7%ƒÄ‹EÈ= #3(:CONSTANT 4 NIL) #3(:JMP-SHORT
+ 2 (:Z #$G17993)) #7%ƒìÿuÐh #3(:CONSTANT 4 ARCHIVE-CONTENT-SHA1) #3(:CALL 5 "RT_fast_call_symbol_1")
+ #10%ƒÄ‰$ÿuÈh #3(:CONSTANT 4 ARCHIVE-CONTENT-SHA1) #3(:CALL 5 "RT_fast_call_symbol_1")
+ #14%ƒÄ‰D$‹EÄÆ@,ÿ #3(:CALL 5 EQUAL) #4%ƒÄ= #3(:CONSTANT 4 NIL) #3(:JMP 6 (:NZ #$G17977))
+ #9%ƒìÿuÐÿuÈ #3(:CALL 5 SYSTEM:LIST2) #13%ƒÄ‰$‹Eä‰D$ #3(:CALL 5 CONS) #6%ƒÄ‰Eä
+ #3(:JMP 5 (T #$G17977)) #3(:LABEL 0 #$G17993) #6%ÿuèÿuÐ #3(:CALL 5 CONS) #6%ƒÄ‰Eè
+ #3(:JMP 5 (T #$G17977)) #3(:LABEL 0 #$G17992) #1%¸ #3(:CONSTANT 4 NIL) #9%ƒìj‹EüP
+ #3(:CALL 5 "RT_copy_closure_data_vector") #5%ƒÄP¸ #3(:FUNCTION 4 #$ANONYMOUS-LAMBDA-17979)
+ #1%P #3(:CALL 5 "RT_make_compiled_closure") #13%ƒÄ‰$‹Eà‰D$ #3(:CALL 5 MAPHASH)
+ #9%ƒÄƒìÿuè #3(:CALL 5 NREVERSE) #9%ƒÄ‰$ÿuä #3(:CALL 5 NREVERSE) #21%ƒÄ‰D$ƒì‹Mü‹	‹‰$h
+ #3(:CONSTANT 4 STRING<) #3(:CALL 5 "RT_symbol_function") #8%ƒÄ‰D$¸ #3(:CONSTANT
+ 4 :KEY) #5%‰D$h #3(:CONSTANT 4 PREFIX) #3(:CALL 5 "RT_symbol_function") #8%ƒÄ‰D$h
+ #3(:CONSTANT 4 SORT) #3(:CALL 5 "RT_fast_call_symbol_4") #26%ƒÄ‰D$‹MÄX‰A0A4A8ÆA,ÉÃ
+ #3(:LABEL 0 #$G17986) #1%h #3(:CONSTANT 4 LIST) #1%P #3(:CALL 5 SYSTEM:ERROR-NOT-TYPE)
+ #2%ÉÃ) 'NIL 2 2 '((-2 . OLD-DIST) (-3 . NEW-DIST) (-4 . OLD-RELEASES) (-5 . NEW-RELEASES)
+ (-6 . NEW) (-7 . UPDATED) (NIL . REMOVED) (-8 . OLD-BY-NAME) (-9 . #$LIST-17969)
+ (-10 . RELEASE) (-11 . #$LIST-17974) (-12 . NEW-RELEASE) (-13 . NAME) (-14 . OLD-RELEASE)
+ (-15 . #$THREAD-17981) (3 . #$NEXT-METHOD-LIST-17964) (2 . #$GF-ARGS-VAR)) 1762)
+ :FAST-FUNCTION (COMPILER::LOAD-COMPILED-LAMBDA-FORM '(SYSTEM:METHOD-FAST-FUNCTION
+ UPDATE-RELEASE-DIFFERENCES (DIST DIST)) '(#5%U‰åj #3(:CALL 5 "RT_allocate_closure_data_vector")
+ #7%ƒÄPƒì0 #3(:CALL 5 "RT_current_thread") #7%‰EÌÿuh #3(:CONSTANT 4 PROVIDED-RELEASES)
+ #3(:CALL 5 "RT_fast_call_symbol_1") #10%ƒÄ‰Eøÿuh #3(:CONSTANT 4 PROVIDED-RELEASES)
+ #3(:CALL 5 "RT_fast_call_symbol_1") #7%ƒÄ‰Eô¸ #3(:CONSTANT 4 NIL) #4%‰Eð¸ #3(:CONSTANT
+ 4 NIL) #4%‰Eìh #3(:CONSTANT 4 NIL) #3(:CALL 5 "RT_make_value_cell_1") #9%ƒÄ‹Uü‰h
+ #3(:CONSTANT 4 EQUALP) #1%h #3(:CONSTANT 4 :TEST) #1%h #3(:CONSTANT 4 MAKE-HASH-TABLE)
+ #3(:CALL 5 "RT_fast_call_symbol_2") #19%ƒÄ‰Eè‹EÌÆ@,ÿ‹Eø‰Eä #3(:LABEL 0 #$G18005)
+ #4%‹Eä= #3(:CONSTANT 4 NIL) #3(:JMP-SHORT 2 (:E #$G18022)) #6%P$<X #3(:JMP 6 (:NE
+ #$G18021)) #25%‹Eä‹@ÿ‰Eà‹Eä‹@‰Eäƒìÿuàh #3(:CONSTANT 4 NAME) #3(:CALL 5 "RT_fast_call_symbol_1")
+ #27%ƒÄ‰$‹Eè‰D$‹Eà‰D$‹EÌÆ@,ÿ #3(:CALL 5 SYSTEM:PUTHASH3) #3%ƒÄ #3(:JMP-SHORT
+ 2 (T #$G18005)) #3(:LABEL 0 #$G18022) #1%¸ #3(:CONSTANT 4 NIL) #6%‹Eô‰EÜ #3(:LABEL
+ 0 #$G18010) #4%‹EÜ= #3(:CONSTANT 4 NIL) #3(:JMP 6 (:E #$G18027)) #6%P$<X #3(:JMP
+ 6 (:NE #$G18021)) #19%‹@ÿ‰EØ‹EÜ‹@‰EÜÿuØh #3(:CONSTANT 4 NAME) #3(:CALL 5 "RT_fast_call_symbol_1")
+ #13%ƒÄ‰EÔÿuèPÿuÌ #3(:CALL 5 "RT_gethash2") #19%ƒÄ‰EÐ‹EÌÆ@,ÿÿuèÿuÔ #3(:CALL 5 REMHASH)
+ #7%ƒÄ‹EÐ= #3(:CONSTANT 4 NIL) #3(:JMP-SHORT 2 (:Z #$G18028)) #7%ƒìÿuØh #3(:CONSTANT
+ 4 ARCHIVE-CONTENT-SHA1) #3(:CALL 5 "RT_fast_call_symbol_1") #10%ƒÄ‰$ÿuÐh #3(:CONSTANT
+ 4 ARCHIVE-CONTENT-SHA1) #3(:CALL 5 "RT_fast_call_symbol_1") #14%ƒÄ‰D$‹EÌÆ@,ÿ #3(:CALL
+ 5 EQUAL) #4%ƒÄ= #3(:CONSTANT 4 NIL) #3(:JMP 6 (:NZ #$G18010)) #9%ƒìÿuØÿuÐ #3(:CALL
+ 5 SYSTEM:LIST2) #13%ƒÄ‰$‹Eì‰D$ #3(:CALL 5 CONS) #6%ƒÄ‰Eì #3(:JMP 5 (T #$G18010))
+ #3(:LABEL 0 #$G18028) #6%ÿuðÿuØ #3(:CALL 5 CONS) #6%ƒÄ‰Eð #3(:JMP 5 (T #$G18010))
+ #3(:LABEL 0 #$G18027) #1%¸ #3(:CONSTANT 4 NIL) #9%ƒìj‹EüP #3(:CALL 5 "RT_copy_closure_data_vector")
+ #5%ƒÄP¸ #3(:FUNCTION 4 #$ANONYMOUS-LAMBDA-18012) #1%P #3(:CALL 5 "RT_make_compiled_closure")
+ #13%ƒÄ‰$‹Eè‰D$ #3(:CALL 5 MAPHASH) #9%ƒÄƒìÿuð #3(:CALL 5 NREVERSE) #9%ƒÄ‰$ÿuì
+ #3(:CALL 5 NREVERSE) #21%ƒÄ‰D$ƒì‹Mü‹	‹‰$h #3(:CONSTANT 4 STRING<) #3(:CALL 5
+ "RT_symbol_function") #8%ƒÄ‰D$¸ #3(:CONSTANT 4 :KEY) #5%‰D$h #3(:CONSTANT 4 PREFIX)
+ #3(:CALL 5 "RT_symbol_function") #8%ƒÄ‰D$h #3(:CONSTANT 4 SORT) #3(:CALL 5 "RT_fast_call_symbol_4")
+ #26%ƒÄ‰D$‹MÌX‰A0A4A8ÆA,ÉÃ #3(:LABEL 0 #$G18021) #1%h #3(:CONSTANT 4 LIST) #1%P
+ #3(:CALL 5 SYSTEM:ERROR-NOT-TYPE) #2%ÉÃ) 'NIL 2 2 '((-2 . OLD-RELEASES) (-3 . NEW-RELEASES)
+ (-4 . NEW) (-5 . UPDATED) (NIL . REMOVED) (-6 . OLD-BY-NAME) (-7 . #$LIST-18002)
+ (-8 . RELEASE) (-9 . #$LIST-18007) (-10 . NEW-RELEASE) (-11 . NAME) (-12 . OLD-RELEASE)
+ (-13 . #$THREAD-18014) (3 . NEW-DIST) (2 . OLD-DIST)) 1762))
+
+(SYSTEM::ENSURE-METHOD 'SHOW-UPDATE-REPORT :LAMBDA-LIST '(OLD-DIST NEW-DIST) :QUALIFIERS
+ 'NIL :SPECIALIZERS (LIST 'DIST 'DIST) :FUNCTION (COMPILER::LOAD-COMPILED-LAMBDA-FORM
+ '(MOP:METHOD-FUNCTION SHOW-UPDATE-REPORT (DIST DIST)) '(#6%U‰åƒì@ #3(:CALL 5 "RT_current_thread")
+ #38%‰EÀ‹E‹@ÿ‰Eü‹E‹@‹@ÿ‰Eø‹EÀÆ@,ÿÿuøÿuüh #3(:CONSTANT 4 UPDATE-RELEASE-DIFFERENCES)
+ #3(:CALL 5 "RT_fast_call_symbol_2") #12%ƒÄ‹UÀŠJ,€ù #3(:JMP 6 (:S #$G18057)) #3%R0
+ #3(:LABEL 0 #$G18058) #28%‹‰Eô‹B‰Eð‹B‰Eì‹EÀÆ@,ÿƒì¸ #3(:CONSTANT 4 T) #4%‰$¸
+ #3(:CONSTANT 4 "Changes from ~A ~A to ~A ~A:~%") #8%‰D$ÿuüh #3(:CONSTANT 4 NAME)
+ #3(:CALL 5 "RT_fast_call_symbol_1") #11%ƒÄ‰D$ÿuüh #3(:CONSTANT 4 VERSION) #3(:CALL
+ 5 "RT_fast_call_symbol_1") #11%ƒÄ‰D$ÿuøh #3(:CONSTANT 4 NAME) #3(:CALL 5 "RT_fast_call_symbol_1")
+ #11%ƒÄ‰D$ÿuøh #3(:CONSTANT 4 VERSION) #3(:CALL 5 "RT_fast_call_symbol_1") #15%ƒÄ‰D$‹EÀÆ@,ÿh
+ #3(:CONSTANT 4 FORMAT) #3(:CALL 5 "RT_fast_call_symbol_6") #7%ƒÄ‹Eô= #3(:CONSTANT
+ 4 NIL) #3(:JMP 6 (:Z #$G18059)) #1%h #3(:CONSTANT 4 "~&  New projects:~%") #1%h #3(:CONSTANT
+ 4 T) #1%h #3(:CONSTANT 4 FORMAT) #3(:CALL 5 "RT_fast_call_symbol_2") #7%ƒÄƒì¸ #3(:CONSTANT
+ 4 T) #4%‰$¸ #3(:CONSTANT 4 "~{    ~A~%~}") #11%‰D$‹Eô‰Eèh #3(:CONSTANT 4 NIL) #3(:CALL
+ 5 SYSTEM:LIST1) #9%ƒÄ‰Eä‰Eà #3(:LABEL 0 #$G18046) #4%‹Eè= #3(:CONSTANT 4 NIL) #3(:JMP-SHORT
+ 2 (:E #$G18064)) #6%P$<X #3(:JMP 6 (:NE #$G18065)) #3(:JMP-SHORT 2 (T #$G18063))
+ #3(:LABEL 0 #$G18064) #13%‹EÀÆ@,ÿ‹Eä‹@ #3(:JMP-SHORT 2 (T #$G18061)) #3(:LABEL 0
+ #$G18063) #10%ÿuà‹Eèÿpÿh #3(:CONSTANT 4 PREFIX) #3(:CALL 5 "RT_fast_call_symbol_1")
+ #11%ƒÄP‹EÀÆ@,ÿ #3(:CALL 5 SYSTEM:LIST1) #21%ƒÄ‰Eà‰ÂX‰P‹Eè‹@‰Eè #3(:JMP-SHORT
+ 2 (T #$G18046)) #3(:LABEL 0 #$G18061) #5%‰D$h #3(:CONSTANT 4 FORMAT) #3(:CALL 5
+ "RT_fast_call_symbol_3") #3%ƒÄ #3(:LABEL 0 #$G18059) #4%‹Eð= #3(:CONSTANT 4 NIL)
+ #3(:JMP 6 (:Z #$G18049)) #1%h #3(:CONSTANT 4 "~%  Updated projects:~%") #1%h #3(:CONSTANT
+ 4 T) #1%h #3(:CONSTANT 4 FORMAT) #3(:CALL 5 "RT_fast_call_symbol_2") #4%ƒÄ¸ #3(:CONSTANT
+ 4 NIL) #10%‰EÜ‹Eð‰EØ¸ #3(:CONSTANT 4 NIL) #4%‰EÔ¸ #3(:CONSTANT 4 NIL) #3%‰EÐ #3(:LABEL
+ 0 #$G18048) #4%‹EØ= #3(:CONSTANT 4 NIL) #3(:JMP 6 (:E #$G18049)) #6%P$<X #3(:JMP
+ 6 (:NE #$G18065)) #11%‹EØˆÂ€â€ú #3(:JMP 6 (:NE #$G18072)) #14%‹@ÿ‰EÜˆÂ€â€ú #3(:JMP
+ 6 (:NE #$G18072)) #17%‹@ÿ‰EÔ‹EÜˆÂ€â€ú #3(:JMP 6 (:NE #$G18072)) #11%‹@ˆÂ€â€ú
+ #3(:JMP 6 (:NE #$G18072)) #10%‹@ÿ‰EÐƒì¸ #3(:CONSTANT 4 T) #4%‰$¸ #3(:CONSTANT 4
+ "    ~A -> ~A~%") #8%‰D$ÿuÔh #3(:CONSTANT 4 PREFIX) #3(:CALL 5 "RT_fast_call_symbol_1")
+ #11%ƒÄ‰D$ÿuÐh #3(:CONSTANT 4 PREFIX) #3(:CALL 5 "RT_fast_call_symbol_1") #15%ƒÄ‰D$‹EÀÆ@,ÿh
+ #3(:CONSTANT 4 FORMAT) #3(:CALL 5 "RT_fast_call_symbol_4") #12%ƒÄ‹EØ‹@‰EØ #3(:JMP
+ 5 (T #$G18048)) #3(:LABEL 0 #$G18049) #4%‹Eì= #3(:CONSTANT 4 NIL) #3(:JMP 6 (:Z #$G18073))
+ #1%h #3(:CONSTANT 4 "~%  Removed projects:~%") #1%h #3(:CONSTANT 4 T) #1%h #3(:CONSTANT
+ 4 FORMAT) #3(:CALL 5 "RT_fast_call_symbol_2") #7%ƒÄƒì¸ #3(:CONSTANT 4 T) #4%‰$¸
+ #3(:CONSTANT 4 "~{    ~A~%~}") #11%‰D$‹Eì‰EÌh #3(:CONSTANT 4 NIL) #3(:CALL 5 SYSTEM:LIST1)
+ #9%ƒÄ‰EÈ‰EÄ #3(:LABEL 0 #$G18055) #4%‹EÌ= #3(:CONSTANT 4 NIL) #3(:JMP-SHORT 2 (:E
+ #$G18078)) #6%P$<X #3(:JMP-SHORT 2 (:NE #$G18065)) #3(:JMP-SHORT 2 (T #$G18077))
+ #3(:LABEL 0 #$G18078) #13%‹EÀÆ@,ÿ‹EÈ‹@ #3(:JMP-SHORT 2 (T #$G18075)) #3(:LABEL 0
+ #$G18077) #10%ÿuÄ‹EÌÿpÿh #3(:CONSTANT 4 PREFIX) #3(:CALL 5 "RT_fast_call_symbol_1")
+ #11%ƒÄP‹EÀÆ@,ÿ #3(:CALL 5 SYSTEM:LIST1) #21%ƒÄ‰EÄ‰ÂX‰P‹EÌ‹@‰EÌ #3(:JMP 5 (T #$G18055))
+ #3(:LABEL 0 #$G18075) #5%‰D$h #3(:CONSTANT 4 FORMAT) #3(:CALL 5 "RT_fast_call_symbol_3")
+ #2%ÉÃ #3(:LABEL 0 #$G18073) #1%¸ #3(:CONSTANT 4 NIL) #2%ÉÃ #3(:LABEL 0 #$G18057)
+ #6%jPÿuÀ #3(:CALL 5 "RT_thread_get_values") #5%ƒÄ‰Â #3(:JMP 5 (T #$G18058)) #3(:LABEL
+ 0 #$G18065) #1%h #3(:CONSTANT 4 LIST) #1%P #3(:CALL 5 SYSTEM:ERROR-NOT-TYPE) #2%ÉÃ
+ #3(:LABEL 0 #$G18072) #1%P #3(:CALL 5 SYSTEM:ERROR-NOT-LIST) #2%ÉÃ) 'NIL 2 2 '((-1
+ . OLD-DIST) (-2 . NEW-DIST) (-3 . NEW) (-4 . UPDATED) (-5 . REMOVED) (-6 . #$G18041)
+ (-7 . #$G18042) (-8 . #$G18043) (-9 . #$G18037) (-10 . #$LIST-18036) (-11 . OLD-RELEASE)
+ (-12 . NEW-RELEASE) (-13 . #$G18050) (-14 . #$G18051) (-15 . #$G18052) (-16 . #$THREAD-18056)
+ (3 . #$NEXT-METHOD-LIST-18033) (2 . #$GF-ARGS-VAR)) 2894) :FAST-FUNCTION (COMPILER::LOAD-COMPILED-LAMBDA-FORM
+ '(SYSTEM:METHOD-FAST-FUNCTION SHOW-UPDATE-REPORT (DIST DIST)) '(#6%U‰åƒì8 #3(:CALL
+ 5 "RT_current_thread") #17%‰EÈ‹EÈÆ@,ÿÿuÿuh #3(:CONSTANT 4 UPDATE-RELEASE-DIFFERENCES)
+ #3(:CALL 5 "RT_fast_call_symbol_2") #12%ƒÄ‹UÈŠJ,€ù #3(:JMP 6 (:S #$G18105)) #3%R0
+ #3(:LABEL 0 #$G18106) #28%‹‰Eü‹B‰Eø‹B‰Eô‹EÈÆ@,ÿƒì¸ #3(:CONSTANT 4 T) #4%‰$¸
+ #3(:CONSTANT 4 "Changes from ~A ~A to ~A ~A:~%") #8%‰D$ÿuh #3(:CONSTANT 4 NAME)
+ #3(:CALL 5 "RT_fast_call_symbol_1") #11%ƒÄ‰D$ÿuh #3(:CONSTANT 4 VERSION) #3(:CALL
+ 5 "RT_fast_call_symbol_1") #11%ƒÄ‰D$ÿuh #3(:CONSTANT 4 NAME) #3(:CALL 5 "RT_fast_call_symbol_1")
+ #11%ƒÄ‰D$ÿuh #3(:CONSTANT 4 VERSION) #3(:CALL 5 "RT_fast_call_symbol_1") #15%ƒÄ‰D$‹EÈÆ@,ÿh
+ #3(:CONSTANT 4 FORMAT) #3(:CALL 5 "RT_fast_call_symbol_6") #7%ƒÄ‹Eü= #3(:CONSTANT
+ 4 NIL) #3(:JMP 6 (:Z #$G18107)) #1%h #3(:CONSTANT 4 "~&  New projects:~%") #1%h #3(:CONSTANT
+ 4 T) #1%h #3(:CONSTANT 4 FORMAT) #3(:CALL 5 "RT_fast_call_symbol_2") #7%ƒÄƒì¸ #3(:CONSTANT
+ 4 T) #4%‰$¸ #3(:CONSTANT 4 "~{    ~A~%~}") #11%‰D$‹Eü‰Eðh #3(:CONSTANT 4 NIL) #3(:CALL
+ 5 SYSTEM:LIST1) #9%ƒÄ‰Eì‰Eè #3(:LABEL 0 #$G18092) #4%‹Eð= #3(:CONSTANT 4 NIL) #3(:JMP-SHORT
+ 2 (:E #$G18112)) #6%P$<X #3(:JMP 6 (:NE #$G18113)) #3(:JMP-SHORT 2 (T #$G18111))
+ #3(:LABEL 0 #$G18112) #13%‹EÈÆ@,ÿ‹Eì‹@ #3(:JMP-SHORT 2 (T #$G18109)) #3(:LABEL 0
+ #$G18111) #10%ÿuè‹Eðÿpÿh #3(:CONSTANT 4 PREFIX) #3(:CALL 5 "RT_fast_call_symbol_1")
+ #11%ƒÄP‹EÈÆ@,ÿ #3(:CALL 5 SYSTEM:LIST1) #21%ƒÄ‰Eè‰ÂX‰P‹Eð‹@‰Eð #3(:JMP-SHORT
+ 2 (T #$G18092)) #3(:LABEL 0 #$G18109) #5%‰D$h #3(:CONSTANT 4 FORMAT) #3(:CALL 5
+ "RT_fast_call_symbol_3") #3%ƒÄ #3(:LABEL 0 #$G18107) #4%‹Eø= #3(:CONSTANT 4 NIL)
+ #3(:JMP 6 (:Z #$G18115)) #1%h #3(:CONSTANT 4 "~%  Updated projects:~%") #1%h #3(:CONSTANT
+ 4 T) #1%h #3(:CONSTANT 4 FORMAT) #3(:CALL 5 "RT_fast_call_symbol_2") #4%ƒÄ¸ #3(:CONSTANT
+ 4 NIL) #10%‰Eä‹Eø‰Eà¸ #3(:CONSTANT 4 NIL) #4%‰EÜ¸ #3(:CONSTANT 4 NIL) #3%‰EØ #3(:LABEL
+ 0 #$G18094) #4%‹Eà= #3(:CONSTANT 4 NIL) #3(:JMP 6 (:E #$G18095)) #6%P$<X #3(:JMP
+ 6 (:NE #$G18113)) #11%‹EàˆÂ€â€ú #3(:JMP 6 (:NE #$G18122)) #14%‹@ÿ‰EäˆÂ€â€ú #3(:JMP
+ 6 (:NE #$G18122)) #17%‹@ÿ‰EÜ‹EäˆÂ€â€ú #3(:JMP 6 (:NE #$G18122)) #11%‹@ˆÂ€â€ú
+ #3(:JMP 6 (:NE #$G18122)) #10%‹@ÿ‰EØƒì¸ #3(:CONSTANT 4 T) #4%‰$¸ #3(:CONSTANT 4
+ "    ~A -> ~A~%") #8%‰D$ÿuÜh #3(:CONSTANT 4 PREFIX) #3(:CALL 5 "RT_fast_call_symbol_1")
+ #11%ƒÄ‰D$ÿuØh #3(:CONSTANT 4 PREFIX) #3(:CALL 5 "RT_fast_call_symbol_1") #15%ƒÄ‰D$‹EÈÆ@,ÿh
+ #3(:CONSTANT 4 FORMAT) #3(:CALL 5 "RT_fast_call_symbol_4") #12%ƒÄ‹Eà‹@‰Eà #3(:JMP
+ 5 (T #$G18094)) #3(:LABEL 0 #$G18095) #1%¸ #3(:CONSTANT 4 NIL) #3(:LABEL 0 #$G18115)
+ #4%‹Eô= #3(:CONSTANT 4 NIL) #3(:JMP 6 (:Z #$G18123)) #1%h #3(:CONSTANT 4 "~%  Removed projects:~%")
+ #1%h #3(:CONSTANT 4 T) #1%h #3(:CONSTANT 4 FORMAT) #3(:CALL 5 "RT_fast_call_symbol_2")
+ #7%ƒÄƒì¸ #3(:CONSTANT 4 T) #4%‰$¸ #3(:CONSTANT 4 "~{    ~A~%~}") #11%‰D$‹Eô‰EÔh
+ #3(:CONSTANT 4 NIL) #3(:CALL 5 SYSTEM:LIST1) #9%ƒÄ‰EÐ‰EÌ #3(:LABEL 0 #$G18101) #4%‹EÔ=
+ #3(:CONSTANT 4 NIL) #3(:JMP-SHORT 2 (:E #$G18128)) #6%P$<X #3(:JMP-SHORT 2 (:NE
+ #$G18113)) #3(:JMP-SHORT 2 (T #$G18127)) #3(:LABEL 0 #$G18128) #13%‹EÈÆ@,ÿ‹EÐ‹@
+ #3(:JMP-SHORT 2 (T #$G18125)) #3(:LABEL 0 #$G18127) #10%ÿuÌ‹EÔÿpÿh #3(:CONSTANT 4
+ PREFIX) #3(:CALL 5 "RT_fast_call_symbol_1") #11%ƒÄP‹EÈÆ@,ÿ #3(:CALL 5 SYSTEM:LIST1)
+ #21%ƒÄ‰EÌ‰ÂX‰P‹EÔ‹@‰EÔ #3(:JMP 5 (T #$G18101)) #3(:LABEL 0 #$G18125) #5%‰D$h
+ #3(:CONSTANT 4 FORMAT) #3(:CALL 5 "RT_fast_call_symbol_3") #3%ƒÄ #3(:JMP-SHORT 2
+ (T #$G18124)) #3(:LABEL 0 #$G18123) #1%¸ #3(:CONSTANT 4 NIL) #3(:LABEL 0 #$G18124)
+ #2%ÉÃ #3(:LABEL 0 #$G18105) #6%jPÿuÈ #3(:CALL 5 "RT_thread_get_values") #5%ƒÄ‰Â
+ #3(:JMP 5 (T #$G18106)) #3(:LABEL 0 #$G18113) #1%h #3(:CONSTANT 4 LIST) #1%P #3(:CALL
+ 5 SYSTEM:ERROR-NOT-TYPE) #2%ÉÃ #3(:LABEL 0 #$G18122) #1%P #3(:CALL 5 SYSTEM:ERROR-NOT-LIST)
+ #2%ÉÃ) 'NIL 2 2 '((-1 . NEW) (-2 . UPDATED) (-3 . REMOVED) (-4 . #$G18087) (-5 . #$G18088)
+ (-6 . #$G18089) (-7 . #$G18083) (-8 . #$LIST-18082) (-9 . OLD-RELEASE) (-10 . NEW-RELEASE)
+ (-11 . #$G18096) (-12 . #$G18097) (-13 . #$G18098) (-14 . #$THREAD-18102) (3 . NEW-DIST)
+ (2 . OLD-DIST)) 2894))
+
+(COMPILER::LOAD-DEFUN 'CLEAR-DIST-SYSTEMS '(#6%U‰åƒì #3(:CALL 5 "RT_current_thread")
+ #7%‰Eôÿuh #3(:CONSTANT 4 PROVIDED-SYSTEMS) #3(:CALL 5 "RT_fast_call_symbol_1") #13%ƒÄ‰Eü‹EôÆ@,ÿ
+ #3(:LABEL 0 #$G18134) #4%‹Eü= #3(:CONSTANT 4 NIL) #3(:JMP-SHORT 2 (:E #$G18144))
+ #6%P$<X #3(:JMP-SHORT 2 (:NE #$G18143)) #22%‹Eü‹@ÿ‰Eø‹Eü‹@‰Eüÿuøh #3(:CONSTANT
+ 4 NAME) #3(:CALL 5 "RT_fast_call_symbol_1") #12%ƒÄP‹EôÆ@,ÿh #3(:CONSTANT 4 ASDF:CLEAR-SYSTEM)
+ #3(:CALL 5 "RT_fast_call_symbol_1") #10%ƒÄ‹EôÆ@,ÿ #3(:JMP-SHORT 2 (T #$G18134))
+ #3(:LABEL 0 #$G18144) #1%¸ #3(:CONSTANT 4 NIL) #2%ÉÃ #3(:LABEL 0 #$G18143) #1%h #3(:CONSTANT
+ 4 LIST) #1%P #3(:CALL 5 SYSTEM:ERROR-NOT-TYPE) #2%ÉÃ) 'NIL 1 1 '((-1 . #$LIST-18131)
+ (-2 . SYSTEM) (-3 . #$THREAD-18136) (2 . DIST)) 3700)
+
+(SYSTEM::ENSURE-METHOD 'UPDATE-IN-PLACE :LAMBDA-LIST '(OLD-DIST NEW-DIST) :QUALIFIERS
+ '(:BEFORE) :SPECIALIZERS (LIST 'DIST 'DIST) :FUNCTION (COMPILER::LOAD-COMPILED-LAMBDA-FORM
+ '(MOP:METHOD-FUNCTION UPDATE-IN-PLACE (DIST DIST)) '(#17%U‰åƒì‹E‹@ÿ‰EüPh #3(:CONSTANT
+ 4 CLEAR-DIST-SYSTEMS) #3(:CALL 5 "RT_fast_call_symbol_1") #2%ÉÃ) 'NIL 2 2 '((-1 . OLD-DIST)
+ (-2 . NEW-DIST) (3 . #$NEXT-METHOD-LIST-18145) (2 . #$GF-ARGS-VAR)) 3817) :FAST-FUNCTION
+ (COMPILER::LOAD-COMPILED-LAMBDA-FORM '(SYSTEM:METHOD-FAST-FUNCTION UPDATE-IN-PLACE
+ (DIST DIST)) '(#7%U‰åÿuh #3(:CONSTANT 4 CLEAR-DIST-SYSTEMS) #3(:CALL 5 "RT_fast_call_symbol_1")
+ #5%ƒÄÉÃ) 'NIL 2 2 '((3 . NEW-DIST) (2 . OLD-DIST)) 3817))
+
+(SYSTEM::ENSURE-METHOD 'UPDATE-IN-PLACE :LAMBDA-LIST '(OLD-DIST NEW-DIST) :QUALIFIERS
+ '(:AFTER) :SPECIALIZERS (LIST 'DIST 'DIST) :FUNCTION (COMPILER::LOAD-COMPILED-LAMBDA-FORM
+ '(MOP:METHOD-FUNCTION UPDATE-IN-PLACE (DIST DIST)) '(#20%U‰åƒì‹E‹@‹@ÿ‰EøPh #3(:CONSTANT
+ 4 CLEAN) #3(:CALL 5 "RT_fast_call_symbol_1") #2%ÉÃ) 'NIL 2 2 '((-1 . OLD-DIST) (-2
+ . NEW-DIST) (3 . #$NEXT-METHOD-LIST-18152) (2 . #$GF-ARGS-VAR)) 3987) :FAST-FUNCTION
+ (COMPILER::LOAD-COMPILED-LAMBDA-FORM '(SYSTEM:METHOD-FAST-FUNCTION UPDATE-IN-PLACE
+ (DIST DIST)) '(#7%U‰åÿuh #3(:CONSTANT 4 CLEAN) #3(:CALL 5 "RT_fast_call_symbol_1")
+ #5%ƒÄÉÃ) 'NIL 2 2 '((3 . NEW-DIST) (2 . OLD-DIST)) 3987))
+
+(MULTIPLE-VALUE-BIND (COMPILER::FINAL-CODE COMPILER::FINAL-CONSTANTS) (COMPILER::GENERATE-CODE-VECTOR
+ '(#6%U‰åƒì #3(:CALL 5 "RT_current_thread") #10%‰Eðƒìƒì¸ #3(:CONSTANT 4 :DIRECTORY)
+ #7%‰$ÿuh #3(:CONSTANT 4 "installed") #1%h #3(:CONSTANT 4 :RELATIVE) #3(:CALL 5
+ SYSTEM:LIST3) #8%ƒÄ‰D$¸ #3(:CONSTANT 4 :NAME) #5%‰D$¸ #3(:CONSTANT 4 :WILD) #5%‰D$¸
+ #3(:CONSTANT 4 :TYPE) #5%‰D$¸ #3(:CONSTANT 4 "txt") #5%‰D$h #3(:CONSTANT 4 MAKE-PATHNAME)
+ #3(:CALL 5 "RT_fast_call_symbol_6") #15%ƒÄ‰$‹M‹	‹Ph #3(:CONSTANT 4 BASE-DIRECTORY)
+ #3(:CALL 5 "RT_fast_call_symbol_1") #17%ƒÄ‰D$‹EðÆ@,ÿTj #3(:CALL 5 MERGE-PATHNAMES)
+ #8%ƒÄ‰EüPh #3(:CONSTANT 4 DIRECTORY) #3(:CALL 5 "RT_fast_call_symbol_1") #6%ƒÄ‰Eø
+ #3(:LABEL 0 #$G18166) #4%‹Eø= #3(:CONSTANT 4 NIL) #3(:JMP-SHORT 2 (:E #$G18182))
+ #6%P$<X #3(:JMP-SHORT 2 (:NE #$G18181)) #21%‹Eø‹@ÿ‰Eô‹Eø‹@‰Eøÿuô #3(:CALL 5 DELETE-FILE)
+ #3%ƒÄ #3(:JMP-SHORT 2 (T #$G18166)) #3(:LABEL 0 #$G18182) #1%¸ #3(:CONSTANT 4 NIL)
+ #2%ÉÃ #3(:LABEL 0 #$G18181) #1%h #3(:CONSTANT 4 LIST) #1%P #3(:CALL 5 SYSTEM:ERROR-NOT-TYPE)
+ #2%ÉÃ) 'NIL) (SYSTEM:SET-FDEFINITION '#$|(FLET NIL REMOVE-INSTALLED)-CTF-18183| (SYSTEM:MAKE-CLOSURE-TEMPLATE-FUNCTION
+ '(FLET NIL REMOVE-INSTALLED) COMPILER::FINAL-CODE 1 1 COMPILER::FINAL-CONSTANTS)))
+
+(MULTIPLE-VALUE-BIND (COMPILER::FINAL-CODE COMPILER::FINAL-CONSTANTS) (COMPILER::GENERATE-CODE-VECTOR
+ '(#6%U‰åƒì #3(:CALL 5 "RT_current_thread") #10%‰Eðƒìƒì¸ #3(:CONSTANT 4 :DIRECTORY)
+ #7%‰$ÿuh #3(:CONSTANT 4 "installed") #1%h #3(:CONSTANT 4 :RELATIVE) #3(:CALL 5
+ SYSTEM:LIST3) #8%ƒÄ‰D$¸ #3(:CONSTANT 4 :NAME) #5%‰D$¸ #3(:CONSTANT 4 :WILD) #5%‰D$¸
+ #3(:CONSTANT 4 :TYPE) #5%‰D$¸ #3(:CONSTANT 4 "txt") #5%‰D$h #3(:CONSTANT 4 MAKE-PATHNAME)
+ #3(:CALL 5 "RT_fast_call_symbol_6") #15%ƒÄ‰$‹M‹	‹Ph #3(:CONSTANT 4 BASE-DIRECTORY)
+ #3(:CALL 5 "RT_fast_call_symbol_1") #17%ƒÄ‰D$‹EðÆ@,ÿTj #3(:CALL 5 MERGE-PATHNAMES)
+ #8%ƒÄ‰EüPh #3(:CONSTANT 4 DIRECTORY) #3(:CALL 5 "RT_fast_call_symbol_1") #6%ƒÄ‰Eø
+ #3(:LABEL 0 #$G18198) #4%‹Eø= #3(:CONSTANT 4 NIL) #3(:JMP-SHORT 2 (:E #$G18216))
+ #6%P$<X #3(:JMP-SHORT 2 (:NE #$G18215)) #21%‹Eø‹@ÿ‰Eô‹Eø‹@‰Eøÿuô #3(:CALL 5 DELETE-FILE)
+ #3%ƒÄ #3(:JMP-SHORT 2 (T #$G18198)) #3(:LABEL 0 #$G18216) #1%¸ #3(:CONSTANT 4 NIL)
+ #2%ÉÃ #3(:LABEL 0 #$G18215) #1%h #3(:CONSTANT 4 LIST) #1%P #3(:CALL 5 SYSTEM:ERROR-NOT-TYPE)
+ #2%ÉÃ) 'NIL) (SYSTEM:SET-FDEFINITION '#$|(FLET NIL REMOVE-INSTALLED)-CTF-18217| (SYSTEM:MAKE-CLOSURE-TEMPLATE-FUNCTION
+ '(FLET NIL REMOVE-INSTALLED) COMPILER::FINAL-CODE 1 1 COMPILER::FINAL-CONSTANTS)))
+
+(SYSTEM::ENSURE-METHOD 'UPDATE-IN-PLACE :LAMBDA-LIST '(OLD-DIST NEW-DIST) :QUALIFIERS
+ 'NIL :SPECIALIZERS (LIST 'DIST 'DIST) :FUNCTION (COMPILER::LOAD-COMPILED-LAMBDA-FORM
+ '(MOP:METHOD-FUNCTION UPDATE-IN-PLACE (DIST DIST)) '(#5%U‰åj #3(:CALL 5 "RT_allocate_closure_data_vector")
+ #7%ƒÄPƒì  #3(:CALL 5 "RT_current_thread") #9%‰EÜ‹Eÿpÿ #3(:CALL 5 "RT_make_value_cell_1")
+ #25%ƒÄ‹Uü‰‹E‹@‹@ÿ‰Eø‹EüP¸ #3(:FUNCTION 4 #$|(FLET NIL REMOVE-INSTALLED)-CTF-18183|)
+ #1%P #3(:CALL 5 "RT_make_compiled_closure") #15%ƒÄ‰Eà‹Mü‹	‹Ph #3(:CONSTANT 4 INSTALLED-RELEASES)
+ #3(:CALL 5 "RT_fast_call_symbol_1") #14%ƒÄ‰Eô‹EÜÆ@,ÿh #3(:CONSTANT 4 "systems")
+ #3%ÿuà #3(:CALL 5 "RT_fast_call_function_1") #4%ƒÄh #3(:CONSTANT 4 "releases") #3%ÿuà
+ #3(:CALL 5 "RT_fast_call_function_1") #17%ƒÄƒì‹Mü‹	‹‰$¸ #3(:CONSTANT 4 "releases.txt")
+ #5%‰D$h #3(:CONSTANT 4 RELATIVE-TO) #3(:CALL 5 "RT_fast_call_symbol_2") #12%ƒÄP‹EÜÆ@,ÿh
+ #3(:CONSTANT 4 DELETE-FILE-IF-EXISTS) #3(:CALL 5 "RT_fast_call_symbol_1") #17%ƒÄƒì‹Mü‹	‹‰$¸
+ #3(:CONSTANT 4 "systems.txt") #5%‰D$h #3(:CONSTANT 4 RELATIVE-TO) #3(:CALL 5 "RT_fast_call_symbol_2")
+ #12%ƒÄP‹EÜÆ@,ÿh #3(:CONSTANT 4 DELETE-FILE-IF-EXISTS) #3(:CALL 5 "RT_fast_call_symbol_1")
+ #17%ƒÄƒì‹Mü‹	‹‰$¸ #3(:CONSTANT 4 "releases.cdb") #5%‰D$h #3(:CONSTANT 4 RELATIVE-TO)
+ #3(:CALL 5 "RT_fast_call_symbol_2") #12%ƒÄP‹EÜÆ@,ÿh #3(:CONSTANT 4 DELETE-FILE-IF-EXISTS)
+ #3(:CALL 5 "RT_fast_call_symbol_1") #17%ƒÄƒì‹Mü‹	‹‰$¸ #3(:CONSTANT 4 "systems.cdb")
+ #5%‰D$h #3(:CONSTANT 4 RELATIVE-TO) #3(:CALL 5 "RT_fast_call_symbol_2") #12%ƒÄP‹EÜÆ@,ÿh
+ #3(:CONSTANT 4 DELETE-FILE-IF-EXISTS) #3(:CALL 5 "RT_fast_call_symbol_1") #10%ƒÄƒìÿuøh
+ #3(:CONSTANT 4 LOCAL-DISTINFO-FILE) #3(:CALL 5 "RT_fast_call_symbol_1") #15%ƒÄ‰$‹Mü‹	‹Ph
+ #3(:CONSTANT 4 LOCAL-DISTINFO-FILE) #3(:CALL 5 "RT_fast_call_symbol_1") #15%ƒÄ‰D$‹EÜÆ@,ÿh
+ #3(:CONSTANT 4 REPLACE-FILE) #3(:CALL 5 "RT_fast_call_symbol_2") #7%ƒÄÿuøh #3(:CONSTANT
+ 4 NAME) #3(:CALL 5 "RT_fast_call_symbol_1") #12%ƒÄP‹EÜÆ@,ÿh #3(:CONSTANT 4 FIND-DIST)
+ #3(:CALL 5 "RT_fast_call_symbol_1") #26%ƒÄ‹UÜÆB,ÿ‰Eø‹EÜÆ@,ÿ‹Eô‰Eð #3(:LABEL 0 #$G18171)
+ #4%‹Eð= #3(:CONSTANT 4 NIL) #3(:JMP 6 (:E #$G18189)) #6%P$<X #3(:JMP 6 (:NE #$G18188))
+ #22%‹Eð‹@ÿ‰Eì‹Eð‹@‰Eðÿuìh #3(:CONSTANT 4 NAME) #3(:CALL 5 "RT_fast_call_symbol_1")
+ #11%ƒÄ‰EèÿuøPh #3(:CONSTANT 4 FIND-RELEASE-IN-DIST) #3(:CALL 5 "RT_fast_call_symbol_2")
+ #17%ƒÄ‰Eä‹EÜÆ@,ÿ‹Eä= #3(:CONSTANT 4 NIL) #3(:JMP-SHORT 2 (:Z #$G18190)) #2%Ph #3(:CONSTANT
+ 4 ENSURE-INSTALLED) #3(:CALL 5 "RT_fast_call_symbol_1") #3%ƒÄ #3(:JMP-SHORT 2 (T
+ #$G18191)) #3(:LABEL 0 #$G18190) #7%ÿuøÿuèh #3(:CONSTANT 4 "~S is not available in ~A")
+ #1%h #3(:CONSTANT 4 WARN) #3(:CALL 5 "RT_fast_call_symbol_3") #3%ƒÄ #3(:LABEL 0
+ #$G18191) #7%‹EÜÆ@,ÿ #3(:JMP 5 (T #$G18171)) #3(:LABEL 0 #$G18189) #1%¸ #3(:CONSTANT
+ 4 NIL) #2%ÉÃ #3(:LABEL 0 #$G18188) #1%h #3(:CONSTANT 4 LIST) #1%P #3(:CALL 5 SYSTEM:ERROR-NOT-TYPE)
+ #2%ÉÃ) 'NIL 2 2 '((NIL . OLD-DIST) (-2 . NEW-DIST) (-3 . REINSTALL-RELEASES) (-4
+ . #$LIST-18168) (-5 . OLD-RELEASE) (-6 . NAME) (-7 . NEW-RELEASE) (-8 . #$G18162)
+ (-9 . #$THREAD-18173) (3 . #$NEXT-METHOD-LIST-18159) (2 . #$GF-ARGS-VAR)) 4076) :FAST-FUNCTION
+ (COMPILER::LOAD-COMPILED-LAMBDA-FORM '(SYSTEM:METHOD-FAST-FUNCTION UPDATE-IN-PLACE
+ (DIST DIST)) '(#5%U‰åj #3(:CALL 5 "RT_allocate_closure_data_vector") #17%ƒÄP‹E‹Mü‹	‰ƒì
+ #3(:CALL 5 "RT_current_thread") #8%‰Eà‹EüP¸ #3(:FUNCTION 4 #$|(FLET NIL REMOVE-INSTALLED)-CTF-18217|)
+ #1%P #3(:CALL 5 "RT_make_compiled_closure") #15%ƒÄ‰Eä‹Mü‹	‹Ph #3(:CONSTANT 4 INSTALLED-RELEASES)
+ #3(:CALL 5 "RT_fast_call_symbol_1") #14%ƒÄ‰Eø‹EàÆ@,ÿh #3(:CONSTANT 4 "systems")
+ #3%ÿuä #3(:CALL 5 "RT_fast_call_function_1") #4%ƒÄh #3(:CONSTANT 4 "releases") #3%ÿuä
+ #3(:CALL 5 "RT_fast_call_function_1") #17%ƒÄƒì‹Mü‹	‹‰$¸ #3(:CONSTANT 4 "releases.txt")
+ #5%‰D$h #3(:CONSTANT 4 RELATIVE-TO) #3(:CALL 5 "RT_fast_call_symbol_2") #12%ƒÄP‹EàÆ@,ÿh
+ #3(:CONSTANT 4 DELETE-FILE-IF-EXISTS) #3(:CALL 5 "RT_fast_call_symbol_1") #17%ƒÄƒì‹Mü‹	‹‰$¸
+ #3(:CONSTANT 4 "systems.txt") #5%‰D$h #3(:CONSTANT 4 RELATIVE-TO) #3(:CALL 5 "RT_fast_call_symbol_2")
+ #12%ƒÄP‹EàÆ@,ÿh #3(:CONSTANT 4 DELETE-FILE-IF-EXISTS) #3(:CALL 5 "RT_fast_call_symbol_1")
+ #17%ƒÄƒì‹Mü‹	‹‰$¸ #3(:CONSTANT 4 "releases.cdb") #5%‰D$h #3(:CONSTANT 4 RELATIVE-TO)
+ #3(:CALL 5 "RT_fast_call_symbol_2") #12%ƒÄP‹EàÆ@,ÿh #3(:CONSTANT 4 DELETE-FILE-IF-EXISTS)
+ #3(:CALL 5 "RT_fast_call_symbol_1") #17%ƒÄƒì‹Mü‹	‹‰$¸ #3(:CONSTANT 4 "systems.cdb")
+ #5%‰D$h #3(:CONSTANT 4 RELATIVE-TO) #3(:CALL 5 "RT_fast_call_symbol_2") #12%ƒÄP‹EàÆ@,ÿh
+ #3(:CONSTANT 4 DELETE-FILE-IF-EXISTS) #3(:CALL 5 "RT_fast_call_symbol_1") #10%ƒÄƒìÿuh
+ #3(:CONSTANT 4 LOCAL-DISTINFO-FILE) #3(:CALL 5 "RT_fast_call_symbol_1") #15%ƒÄ‰$‹Mü‹	‹Ph
+ #3(:CONSTANT 4 LOCAL-DISTINFO-FILE) #3(:CALL 5 "RT_fast_call_symbol_1") #15%ƒÄ‰D$‹EàÆ@,ÿh
+ #3(:CONSTANT 4 REPLACE-FILE) #3(:CALL 5 "RT_fast_call_symbol_2") #7%ƒÄÿuh #3(:CONSTANT
+ 4 NAME) #3(:CALL 5 "RT_fast_call_symbol_1") #12%ƒÄP‹EàÆ@,ÿh #3(:CONSTANT 4 FIND-DIST)
+ #3(:CALL 5 "RT_fast_call_symbol_1") #26%ƒÄ‹UàÆB,ÿ‰E‹EàÆ@,ÿ‹Eø‰Eô #3(:LABEL 0 #$G18203)
+ #4%‹Eô= #3(:CONSTANT 4 NIL) #3(:JMP 6 (:E #$G18223)) #6%P$<X #3(:JMP 6 (:NE #$G18222))
+ #22%‹Eô‹@ÿ‰Eð‹Eô‹@‰Eôÿuðh #3(:CONSTANT 4 NAME) #3(:CALL 5 "RT_fast_call_symbol_1")
+ #11%ƒÄ‰EìÿuPh #3(:CONSTANT 4 FIND-RELEASE-IN-DIST) #3(:CALL 5 "RT_fast_call_symbol_2")
+ #17%ƒÄ‰Eè‹EàÆ@,ÿ‹Eè= #3(:CONSTANT 4 NIL) #3(:JMP-SHORT 2 (:Z #$G18224)) #2%Ph #3(:CONSTANT
+ 4 ENSURE-INSTALLED) #3(:CALL 5 "RT_fast_call_symbol_1") #3%ƒÄ #3(:JMP-SHORT 2 (T
+ #$G18225)) #3(:LABEL 0 #$G18224) #7%ÿuÿuìh #3(:CONSTANT 4 "~S is not available in ~A")
+ #1%h #3(:CONSTANT 4 WARN) #3(:CALL 5 "RT_fast_call_symbol_3") #3%ƒÄ #3(:LABEL 0
+ #$G18225) #7%‹EàÆ@,ÿ #3(:JMP 5 (T #$G18203)) #3(:LABEL 0 #$G18223) #1%¸ #3(:CONSTANT
+ 4 NIL) #2%ÉÃ #3(:LABEL 0 #$G18222) #1%h #3(:CONSTANT 4 LIST) #1%P #3(:CALL 5 SYSTEM:ERROR-NOT-TYPE)
+ #2%ÉÃ) 'NIL 2 2 '((-2 . REINSTALL-RELEASES) (-3 . #$LIST-18200) (-4 . OLD-RELEASE)
+ (-5 . NAME) (-6 . NEW-RELEASE) (-7 . #$G18194) (-8 . #$THREAD-18205) (3 . NEW-DIST)
+ (NIL . OLD-DIST)) 4076))
+
+(MULTIPLE-VALUE-BIND (COMPILER::FINAL-CODE COMPILER::FINAL-CONSTANTS) (COMPILER::GENERATE-CODE-VECTOR
+ '(#14%U‰åP‹EPj ‹EP #3(:CALL 5 "RT_restify") #9%ƒÄ‰Eüƒì #3(:CALL 5 "RT_current_thread")
+ #16%‰Eø‹EüP‹M‹	‰Xh #3(:CONSTANT 4 #$G18228) #3%ÿuø #3(:CALL 5 "RT_non_local_go")
+ #5%ƒÄÉÃ) 'NIL) (SYSTEM:SET-FDEFINITION '#$ANONYMOUS-LAMBDA-18236 (SYSTEM:MAKE-CLOSURE-TEMPLATE-FUNCTION
+ '#$ANONYMOUS-LAMBDA-18236 COMPILER::FINAL-CODE 0 255 COMPILER::FINAL-CONSTANTS)))
+
+(MULTIPLE-VALUE-BIND (COMPILER::FINAL-CODE COMPILER::FINAL-CONSTANTS) (COMPILER::GENERATE-CODE-VECTOR
+ '(#6%U‰åƒì #3(:CALL 5 "RT_current_thread") #7%‰Eüÿuh #3(:CONSTANT 4 "Replace installed dist with new dist")
+ #1%h #3(:CONSTANT 4 WRITE-STRING) #3(:CALL 5 "RT_fast_call_symbol_2") #2%ÉÃ) 'NIL)
+ (SYSTEM:SET-FDEFINITION '#$ANONYMOUS-LAMBDA-18238 (SYSTEM:MAKE-CLOSURE-TEMPLATE-FUNCTION
+ '#$ANONYMOUS-LAMBDA-18238 COMPILER::FINAL-CODE 1 1 COMPILER::FINAL-CONSTANTS)))
+
+(MULTIPLE-VALUE-BIND (COMPILER::FINAL-CODE COMPILER::FINAL-CONSTANTS) (COMPILER::GENERATE-CODE-VECTOR
+ '(#6%U‰åƒì #3(:CALL 5 "RT_current_thread") #13%‰Eü‹M‹I‹Ph #3(:CONSTANT 4 UNINSTALL)
+ #3(:CALL 5 "RT_fast_call_symbol_1") #2%ÉÃ) 'NIL) (SYSTEM:SET-FDEFINITION '#$ANONYMOUS-LAMBDA-18242
+ (SYSTEM:MAKE-CLOSURE-TEMPLATE-FUNCTION '#$ANONYMOUS-LAMBDA-18242 COMPILER::FINAL-CODE
+ 0 0 COMPILER::FINAL-CONSTANTS)))
+
+(COMPILER::LOAD-DEFUN 'INSTALL-DIST '(#5%U‰åj #3(:CALL 5 "RT_allocate_closure_data_vector")
+ #9%ƒÄPƒìTh #3(:CONSTANT 4 #.(SYSTEM:COERCE-TO-FUNCTION (LAMBDA (URL &KEY (PROMPT T) REPLACE) NIL)))
+ #6%ÿuÿu #3(:CALL 5 "RT_process_args") #6%ƒÄƒì$ #3(:CALL 5 "RT_current_thread")
+ #7%‰EÌÿuðh #3(:CONSTANT 4 URL) #3(:CALL 5 "RT_fast_call_symbol_1") #14%ƒÄ‹UÌÆB,ÿ‰Eðh
+ #3(:CONSTANT 4 "tmp/install-dist-distinfo.txt") #1%h #3(:CONSTANT 4 QMERGE) #3(:CALL
+ 5 "RT_fast_call_symbol_1") #17%ƒÄ‰Eì‹EÌÆ@,ÿÿuìh #3(:CONSTANT 4 ENSURE-DIRECTORIES-EXIST)
+ #3(:CALL 5 "RT_fast_call_symbol_1") #7%ƒÄÿuìh #3(:CONSTANT 4 DELETE-FILE-IF-EXISTS)
+ #3(:CALL 5 "RT_fast_call_symbol_1") #10%ƒÄÿuìÿuðh #3(:CONSTANT 4 FETCH) #3(:CALL
+ 5 "RT_fast_call_symbol_2") #14%ƒÄ‹EÌÆ@,ÿÿuìh #3(:CONSTANT 4 MAKE-DIST-FROM-FILE)
+ #3(:CALL 5 "RT_fast_call_symbol_1") #8%ƒÄ‰EèPh #3(:CONSTANT 4 NAME) #3(:CALL 5 "RT_fast_call_symbol_1")
+ #12%ƒÄP‹EÌÆ@,ÿh #3(:CONSTANT 4 FIND-DIST) #3(:CALL 5 "RT_fast_call_symbol_1") #4%ƒÄP
+ #3(:CALL 5 "RT_make_value_cell_1") #25%ƒÄ‹Uü‰B‹EÌÆ@,ÿ‹Mü‹I‹= #3(:CONSTANT 4 NIL)
+ #3(:JMP 6 (:Z #$G18254)) #4%‹Eø= #3(:CONSTANT 4 NIL) #3(:JMP-SHORT 2 (:Z #$G18253))
+ #10%‹Mü‹I‹Ph #3(:CONSTANT 4 UNINSTALL) #3(:CALL 5 "RT_fast_call_symbol_1") #3%ƒÄ
+ #3(:JMP 5 (T #$G18254)) #3(:LABEL 0 #$G18253) #10%‹EÌ‹@‰EÔh #3(:CONSTANT 4 NIL)
+ #3(:CALL 5 "RT_make_value_cell_1") #11%ƒÄ‹Uü‰ÿuÌ #3(:CALL 5 "RT_add_tagbody") #12%ƒÄ‰EØj ÿuØh
+ #3(:CONSTANT 4 #$G18228) #3%ÿuÌ #3(:CALL 5 "RT_add_tag") #6%ƒÄÿuØ #3(:CALL 5 "RT_frame_jmp")
+ #4%ƒÄP #3(:CALL 5 "setjmp") #5%ƒÄ…À #3(:JMP 6 (:NZ #$G18257)) #16%‹EÌ‹@‰EÜƒìƒì¸
+ #3(:CONSTANT 4 :NAME) #4%‰$¸ #3(:CONSTANT 4 REPLACE) #5%‰D$¸ #3(:CONSTANT 4 :FUNCTION)
+ #10%‰D$j‹EüP #3(:CALL 5 "RT_copy_closure_data_vector") #5%ƒÄP¸ #3(:FUNCTION 4
+ #$ANONYMOUS-LAMBDA-18236) #1%P #3(:CALL 5 "RT_make_compiled_closure") #8%ƒÄ‰D$¸
+ #3(:CONSTANT 4 :REPORT-FUNCTION) #10%‰D$j‹EüP #3(:CALL 5 "RT_copy_closure_data_vector")
+ #5%ƒÄP¸ #3(:FUNCTION 4 #$ANONYMOUS-LAMBDA-18238) #1%P #3(:CALL 5 "RT_make_compiled_closure")
+ #8%ƒÄ‰D$h #3(:CONSTANT 4 SYSTEM::MAKE-RESTART) #3(:CALL 5 "RT_fast_call_symbol_6")
+ #11%ƒÄP‹EÌÆ@,ÿ #3(:CALL 5 SYSTEM:LIST1) #7%ƒÄ‰$h #3(:CONSTANT 4 SYSTEM::*RESTART-CLUSTERS*)
+ #3%ÿuÌ #3(:CALL 5 "RT_thread_symbol_value") #7%ƒÄ‰D$ #3(:CALL 5 CONS) #5%ƒÄPh
+ #3(:CONSTANT 4 SYSTEM::*RESTART-CLUSTERS*) #3%ÿuÌ #3(:CALL 5 "RT_thread_bind_special")
+ #14%ƒÄ‹EÌÆ@,ÿƒì¸ #3(:CONSTANT 4 "A dist named ~S is already installed.") #7%‰$ÿuèh
+ #3(:CONSTANT 4 NAME) #3(:CALL 5 "RT_fast_call_symbol_1") #11%ƒÄP‹EÌÆ@,ÿ #3(:CALL
+ 5 SYSTEM:LIST1) #8%ƒÄ‰D$¸ #3(:CONSTANT 4 SIMPLE-ERROR) #5%‰D$¸ #3(:CONSTANT 4
+ ERROR) #5%‰D$h #3(:CONSTANT 4 SYSTEM:COERCE-TO-CONDITION) #3(:CALL 5 "RT_fast_call_symbol_4")
+ #38%ƒÄ‰Eä‹EÌÆ@,ÿ‹EÌ‹@‰Eàƒìƒì‹Eä‰$ƒìh #3(:CONSTANT 4 SYSTEM::*RESTART-CLUSTERS*)
+ #3%ÿuÌ #3(:CALL 5 "RT_thread_symbol_value") #11%ƒÄˆÂ€â€ú #3(:JMP 6 (:NE #$G18261))
+ #16%‹@ÿ‰$ƒì‹Eä‰$h #3(:CONSTANT 4 SYSTEM::*CONDITION-RESTARTS*) #3%ÿuÌ #3(:CALL
+ 5 "RT_thread_symbol_value") #7%ƒÄ‰D$ #3(:CALL 5 EXTENSIONS:ASSQL) #10%ƒÄ‹@‰D$
+ #3(:CALL 5 SYSTEM:TWO-ARG-APPEND) #7%ƒÄ‰D$ #3(:CALL 5 CONS) #7%ƒÄ‰$h #3(:CONSTANT
+ 4 SYSTEM::*CONDITION-RESTARTS*) #3%ÿuÌ #3(:CALL 5 "RT_thread_symbol_value") #7%ƒÄ‰D$
+ #3(:CALL 5 CONS) #5%ƒÄPh #3(:CONSTANT 4 SYSTEM::*CONDITION-RESTARTS*) #3%ÿuÌ #3(:CALL
+ 5 "RT_thread_bind_special") #7%ƒÄÿuäh #3(:CONSTANT 4 ERROR) #3(:CALL 5 "RT_fast_call_symbol_1")
+ #10%ƒÄPÿuàÿuÌ #3(:CALL 5 "RT_thread_set_last_special_binding") #13%ƒÄXP‹EØP‹EÌP
+ #3(:CALL 5 "RT_leave_tagbody") #4%ƒÄX #3(:JMP-SHORT 2 (T #$G18255)) #3(:LABEL 0
+ #$G18235) #16%‹EÌÆ@,ÿƒìj‹EüP #3(:CALL 5 "RT_copy_closure_data_vector") #5%ƒÄP¸
+ #3(:FUNCTION 4 #$ANONYMOUS-LAMBDA-18242) #1%P #3(:CALL 5 "RT_make_compiled_closure")
+ #17%ƒÄ‰$‹Mü‹	‹‰D$ #3(:CALL 5 "RT_fast_apply_function_2") #12%ƒÄP‹EØP‹EÌP #3(:CALL
+ 5 "RT_leave_tagbody") #4%ƒÄX #3(:JMP-SHORT 2 (T #$G18255)) #3(:LABEL 0 #$G18257)
+ #17%HkÀè    ZÐƒÀÿà #3(:JMP 5 (:JUMP-TABLE #$G18235)) #6%ÿuØÿuÌ #3(:CALL 5 "RT_leave_tagbody")
+ #9%ƒÄ1À‰EØ¸ #3(:CONSTANT 4 NIL) #3(:LABEL 0 #$G18255) #7%PÿuÔÿuÌ #3(:CALL 5 "RT_thread_set_last_special_binding")
+ #4%ƒÄX #3(:LABEL 0 #$G18254) #4%ƒì¸ #3(:CONSTANT 4 T) #4%‰$¸ #3(:CONSTANT 4 "Installing dist ~S version ~S.~%")
+ #8%‰D$ÿuèh #3(:CONSTANT 4 NAME) #3(:CALL 5 "RT_fast_call_symbol_1") #11%ƒÄ‰D$ÿuèh
+ #3(:CONSTANT 4 VERSION) #3(:CALL 5 "RT_fast_call_symbol_1") #15%ƒÄ‰D$‹EÌÆ@,ÿh #3(:CONSTANT
+ 4 FORMAT) #3(:CALL 5 "RT_fast_call_symbol_4") #14%ƒÄ‹EÌÆ@,ÿ‹Eô= #3(:CONSTANT 4 NIL)
+ #3(:JMP-SHORT 2 (:Z #$G18265)) #1%¸ #3(:CONSTANT 4 NIL) #3(:JMP-SHORT 2 (T #$G18266))
+ #3(:LABEL 0 #$G18265) #1%¸ #3(:CONSTANT 4 T) #3(:LABEL 0 #$G18266) #1%= #3(:CONSTANT
+ 4 NIL) #3(:JMP-SHORT 2 (:NE #$G18263)) #1%h #3(:CONSTANT 4 PRESS-ENTER-TO-CONTINUE)
+ #3(:CALL 5 "RT_fast_call_symbol_0") #11%ƒÄ‹UÌÆB,ÿ= #3(:CONSTANT 4 NIL) #3(:JMP 6
+ (:E #$G18264)) #3(:LABEL 0 #$G18263) #4%ÿuèh #3(:CONSTANT 4 BASE-DIRECTORY) #3(:CALL
+ 5 "RT_fast_call_symbol_1") #12%ƒÄP‹EÌÆ@,ÿh #3(:CONSTANT 4 ENSURE-DIRECTORIES-EXIST)
+ #3(:CALL 5 "RT_fast_call_symbol_1") #13%ƒÄƒì‹Eì‰$h #3(:CONSTANT 4 "distinfo.txt")
+ #4%ÿuèh #3(:CONSTANT 4 RELATIVE-TO) #3(:CALL 5 "RT_fast_call_symbol_2") #15%ƒÄ‰D$‹EÌÆ@,ÿh
+ #3(:CONSTANT 4 COPY-FILE) #3(:CALL 5 "RT_fast_call_symbol_2") #7%ƒÄÿuèh #3(:CONSTANT
+ 4 ENSURE-RELEASE-INDEX-FILE) #3(:CALL 5 "RT_fast_call_symbol_1") #7%ƒÄÿuèh #3(:CONSTANT
+ 4 ENSURE-SYSTEM-INDEX-FILE) #3(:CALL 5 "RT_fast_call_symbol_1") #7%ƒÄÿuèh #3(:CONSTANT
+ 4 ENABLE) #3(:CALL 5 "RT_fast_call_symbol_1") #3%ƒÄ #3(:CALL 5 GET-UNIVERSAL-TIME)
+ #14%‰EÐ‹EÌÆ@,ÿƒìh #3(:CONSTANT 4 PREFERENCE) #3(:CALL 5 "RT_symbol_setf_function")
+ #20%ƒÄ‰$‹EÐ‰D$‹Eè‰D$ #3(:CALL 5 "RT_fast_call_function_2") #12%ƒÄ‹Mü‹I‹= #3(:CONSTANT
+ 4 NIL) #3(:JMP-SHORT 2 (:Z #$G18267)) #9%‹Mü‹I‹P #3(:CALL 5 CLEAR-DIST-SYSTEMS)
+ #3%ƒÄ #3(:LABEL 0 #$G18267) #3%ÿuè #3(:CALL 5 CLEAR-DIST-SYSTEMS) #13%ƒÄ‹EÌÆ@,ÿ‹Eè
+ #3(:LABEL 0 #$G18264) #2%ÉÃ #3(:LABEL 0 #$G18261) #1%P #3(:CALL 5 SYSTEM:ERROR-NOT-LIST)
+ #2%ÉÃ) 'NIL 1 255 '((-5 . TEMP-FILE) (-6 . NEW-DIST) (NIL . OLD-DIST) (NIL . #$G18227)
+ (NIL . SYSTEM::*RESTART-CLUSTERS*) (NIL . SYSTEM::*RESTART-CLUSTERS*) (-7 . #$G18229)
+ (NIL . SYSTEM::*CONDITION-RESTARTS*) (NIL . SYSTEM::*CONDITION-RESTARTS*) (NIL . SYSTEM::*CONDITION-RESTARTS*)
+ (-8 . #$LAST-SPECIAL-BINDING-18240) (-9 . #$LAST-SPECIAL-BINDING-18241) (-10 . #$TAGBODY-18244)
+ (-11 . #$LAST-SPECIAL-BINDING-18245) (-12 . #$G18231) (-13 . #$THREAD-18246) (-2
+ . REPLACE) (-3 . PROMPT) (-4 . URL)) 5587)
+

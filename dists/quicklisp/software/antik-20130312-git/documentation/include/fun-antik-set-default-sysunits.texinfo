@@ -1,0 +1,6 @@
+@deffn {Function} {antik:set-default-sysunits} sysunits @&rest additional-units
+@findex antik:set-default-sysunits
+Set the default system of units to the specified system,
+   possibly augmenting it with other units.  additional-units
+    may be @code{nil} to augment the current default system.
+@end deffn

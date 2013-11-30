@@ -1,0 +1,34 @@
+; -*- Mode: Lisp -*-
+; Compiler policy: safety 1, space 1, speed 1, debug 1
+; SYSTEM:*FORCE-FULL-CALLS* is NIL
+; SYSTEM:*FORCE-TYPE-CHECKS* is NIL
+
+(SYSTEM:INIT-FASL COMMON-LISP:NIL)
+
+(COMMON-LISP:SETQ SYSTEM:*SOURCE-FILE* #P"/home/wbooze/quicklisp/quicklisp/misc.lisp")
+
+(SYSTEM:%IN-PACKAGE "QUICKLISP-CLIENT")
+
+(COMPILER::LOAD-DEFUN 'USE-ONLY-QUICKLISP-SYSTEMS '(#6%U‰åƒì #3(:CALL 5 "RT_current_thread")
+ #4%‰Eüh #3(:CONSTANT 4 (:SOURCE-REGISTRY :IGNORE-INHERITED-CONFIGURATION)) #1%h #3(:CONSTANT
+ 4 ASDF:INITIALIZE-SOURCE-REGISTRY) #3(:CALL 5 "RT_fast_call_symbol_1") #4%ƒÄh #3(:CONSTANT
+ 4 ASDF:CLEAR-SYSTEM) #1%h #3(:CONSTANT 4 ASDF:MAP-SYSTEMS) #3(:CALL 5 "RT_fast_call_symbol_1")
+ #11%ƒÄ‹EüÆ@,ÿ¸ #3(:CONSTANT 4 T) #2%ÉÃ) 'NIL 0 0 '((-1 . #$THREAD-18322)) 48)
+
+(COMPILER::LOAD-DEFUN 'WHO-DEPENDS-ON '(#6%U‰åƒì #3(:CALL 5 "RT_current_thread")
+ #4%‰Eìh #3(:CONSTANT 4 NIL) #3(:CALL 5 SYSTEM:LIST1) #10%ƒÄ‰Eü‰Eøh #3(:CONSTANT
+ 4 T) #1%h #3(:CONSTANT 4 PROVIDED-SYSTEMS) #3(:CALL 5 "RT_fast_call_symbol_1") #7%ƒÄ‰Eô¸
+ #3(:CONSTANT 4 NIL) #10%‰Eð‹EìÆ@,ÿ #3(:LABEL 0 #$G18336) #4%‹Eô= #3(:CONSTANT 4 NIL)
+ #3(:JMP 6 (:E #$G18338)) #6%P$<X #3(:JMP 6 (:NE #$G18346)) #11%‹EôˆÂ€â€ú #3(:JMP
+ 6 (:NE #$G18348)) #19%‹@ÿ‰Eðƒì‹E‰$ÿuðh #3(:CONSTANT 4 REQUIRED-SYSTEMS) #3(:CALL
+ 5 "RT_fast_call_symbol_1") #8%ƒÄ‰D$¸ #3(:CONSTANT 4 :TEST) #5%‰D$¸ #3(:CONSTANT
+ 4 STRING=) #12%‰D$‹EìÆ@,ÿh #3(:CONSTANT 4 MEMBER) #3(:CALL 5 "RT_fast_call_symbol_4")
+ #4%ƒÄ= #3(:CONSTANT 4 NIL) #3(:JMP-SHORT 2 (:Z #$G18337)) #7%ÿuøÿuðh #3(:CONSTANT
+ 4 NAME) #3(:CALL 5 "RT_fast_call_symbol_1") #11%ƒÄP‹EìÆ@,ÿ #3(:CALL 5 SYSTEM:LIST1)
+ #12%ƒÄ‰Eø‰ÂX‰P #3(:LABEL 0 #$G18337) #11%‹EôˆÂ€â€ú #3(:JMP-SHORT 2 (:NE #$G18348))
+ #6%‹@‰Eô #3(:JMP 5 (T #$G18336)) #3(:LABEL 0 #$G18338) #15%‹EìÆ@,ÿ‹Eü‹@ÉÃ #3(:LABEL
+ 0 #$G18346) #1%h #3(:CONSTANT 4 LIST) #1%P #3(:CALL 5 SYSTEM:ERROR-NOT-TYPE) #2%ÉÃ
+ #3(:LABEL 0 #$G18348) #1%P #3(:CALL 5 SYSTEM:ERROR-NOT-LIST) #2%ÉÃ) 'NIL 1 1 '((-1
+ . #$ACCUMULATOR-18330) (-2 . #$SPLICE-18331) (-3 . #$LIST-18327) (-4 . SYSTEM) (-5
+ . #$THREAD-18339) (2 . SYSTEM-NAME)) 283)
+

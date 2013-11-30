@@ -1,0 +1,1 @@
+dists/quicklisp/software/mcclim-20130312-cvs/Apps/Functional-Geometry/functional-geometry.asd

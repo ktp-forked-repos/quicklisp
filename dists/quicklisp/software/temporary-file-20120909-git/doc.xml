@@ -1,0 +1,270 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet type='text/xsl' href='clixdoc.xsl' ?>
+<clix:documentation xmlns='http://www.w3.org/1999/xhtml' xmlns:clix='http://bknr.net/clixdoc'>
+  <clix:title>TEMPORARY-FILE - A Lisp library to create temporary files</clix:title>
+  <clix:short-description>
+    Portable operators to create temporary files.
+  </clix:short-description>
+  <blockquote>
+    <clix:chapter name='abstract' title='Abstract'>
+      This Common Lisp library implements a portable way to generate
+      files with unique names.
+    </clix:chapter>
+  </blockquote>
+  <clix:contents/>
+  <clix:chapter name='installation' title='Download and Installation'>
+    <p>
+      TEMPORARY-FILE depends on a number of supplemental libraries.
+      The recommended installation method is through the <a
+      href='http://www.quicklisp.org/'>Quicklisp</a> library
+      management facility.
+    </p>
+    <p>
+      The upstream repository for TEMPORARY-FILE is on <a
+      href='https://github.com/hanshuebner/temporary-file'>github</a>.
+      Please fork and send pull requests if you have changes.
+    </p>
+  </clix:chapter>
+  <clix:chapter name='synopsis' title='Synopsis'>
+    <p>
+      Create a temporary file and return its name:
+<pre>CL-USER> (temporary-file:<clix:ref>with-output-to-temporary-file</clix:ref> (foo)
+           (print "hello" foo))
+#P"/var/folders/Yu/YuNMNBNPGoqs9G-1Wmj1dk+++TI/-Tmp-/temp-yjck024x"</pre>
+    </p>
+    <p>
+      Create a temporary file, read and write it, have it be deleted
+      automatically:
+<pre>CL-USER> (temporary-file:<clix:ref>with-open-temporary-file</clix:ref> (foo :direction :io)
+           (print "hello" foo)
+           (file-position foo 0)
+           (read foo))
+"hello"</pre>
+    </p>
+  </clix:chapter>
+  <clix:chapter name='default-temporary-directory' title='Default temporary file directory'>
+    By default, temporary files are created in a system specific
+    directory that defaults based on operating system conventions.  On
+    Unix and Unix-like systems, the directory <tt>/tmp/</tt> is used
+    by default.  It can be overridden by setting the <tt>TMPDIR</tt>
+    environment variable.  On Windows, the value of the environment
+    variable <tt>TEMP</tt> is used.  If it is not set, temporary file
+    creation will fail.
+  </clix:chapter>
+  <clix:chapter name='defining-temporary-directory' title='Defining the temporary file directory'>
+    <p>
+      The Lisp application can set the default directory in which
+      temporary files are created by the way of the
+      <clix:ref>temporary-files</clix:ref> logical pathname host:
+
+<pre>(setf (<clix:hyperspec link='f_logica.htm'>logical-pathname-translations</clix:hyperspec> "<clix:ref>temporary-files</clix:ref>") '(("*.*.*" "/var/tmp/")))</pre>
+
+      This would set the directory for temporary files to
+      <tt>/var/tmp/</tt>.  For more information about logical
+      pathnames, please refer to <a
+      href="http://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/html/cltl/clm/node208.html#SECTION002715000000000000000">Common
+      Lisp the Language, 2nd Edition</a> and the <a
+      href="http://clhs.lisp.se/Body/19_.htm">Common Lisp
+      HyperSpec</a>.
+    </p>
+    <p>
+      Physical path names have restrictions regarding the permitted
+      character in file names.  If these restrictions conflict with
+      your desired naming scheme, you can pass a physical pathname as
+      TEMPLATE parameter to the temporary file generation function.
+    </p>
+    <p>
+      Here are a few examples:
+<pre>CL-USER> (<clix:hyperspec link='f_logica.htm'>logical-pathname-translations</clix:hyperspec> "temporary-files")
+(("*.*.*" #P"/var/folders/Yu/YuNMNBNPGoqs9G-1Wmj1dk+++TI/-Tmp-/"))
+CL-USER> (temporary-file:<clix:ref>with-open-temporary-file</clix:ref> (foo)
+           (<clix:hyperspec link='f_pn.htm'>pathname</clix:hyperspec> foo))
+#P"/var/folders/Yu/YuNMNBNPGoqs9G-1Wmj1dk+++TI/-Tmp-/temp-6rdqdkd1"</pre>
+
+      This used the temporary directory established in the TMPDIR
+      environment variable, by the way of the definition of the
+      temporary-files logical host definition.
+
+<pre>CL-USER> (temporary-file:<clix:ref>with-open-temporary-file</clix:ref> (foo :template "/tmp/file.with.dots.in.name.%.txt")
+           (<clix:hyperspec link='f_pn.htm'>pathname</clix:hyperspec> foo))
+#P"/tmp/file.with.dots.in.name.2EF04KUJ.txt"</pre>
+
+      Here, a physical pathname was used for the
+      <clix:arg>:template</clix:arg> keyword argument so that a
+      filename containing multiple dots could be generated.
+
+<pre>CL-USER> (temporary-file:<clix:ref>with-open-temporary-file</clix:ref> (foo :template "temporary-files:blah-%.txt")
+           (<clix:hyperspec link='f_pn.htm'>pathname</clix:hyperspec> foo))
+#P"/var/folders/Yu/YuNMNBNPGoqs9G-1Wmj1dk+++TI/-Tmp-/blah-72mj450d.txt"</pre>
+
+      This used the temporary-files logical pathname host, but changed
+      the filename slightly.
+
+<pre>CL-USER> *default-pathname-defaults*
+#P"/Users/hans/"
+CL-USER> (temporary-file:<clix:ref>with-open-temporary-file</clix:ref> (foo :template "blah-%.txt")
+           (<clix:hyperspec link='f_pn.htm'>pathname</clix:hyperspec> foo))
+#P"/Users/hans/blah-5OEJELG2.txt"</pre>
+
+      Here, a relative pathname was used in the template, which
+      caused the file to be generated in the directory established
+      by <clix:hyperspec
+      link='v_defaul.htm'>*default-pathname-defaults*</clix:hyperspec>.
+    </p>
+    <p>
+      Alternatively, the <clix:ref>*default-template*</clix:ref>
+      special variable can be set to define a custom default template
+      for generating names.
+    </p>
+  </clix:chapter>
+  <clix:chapter name='security' title='Security'>
+    The TEMPORARY-FILE library does not directly address security
+    issues.  The application that uses it needs to take additional
+    measures if it is important that files created by one process
+    cannot be accessed by other, unrelated processes.  This can be
+    done by using the system dependent security mechanisms like
+    default file permissions or access control lists.
+  </clix:chapter>
+  <clix:chapter name='reference' title='Reference'>
+    <clix:function name='open-temporary'>
+      <clix:lambda-list>&amp;rest open-arguments &amp;key template generate-random-string max-tries &amp;allow-other-keys</clix:lambda-list>
+      <clix:returns>stream</clix:returns>
+      <clix:description>
+        <p>
+          Create a file with a randomly generated name and return the
+          opened stream.  The resulting pathname is generated from
+          <clix:arg>template</clix:arg>, which is a string
+          representing a pathname template.  A percent sign (%) in
+          that string is replaced by a randomly generated string to
+          make the filename unique.  The default for
+          <clix:arg>template</clix:arg> places temporary files in the
+          <clix:ref>temporary-files</clix:ref> logical pathname host,
+          which is automatically set up in a system specific manner.
+          The file name generated from <clix:arg>template</clix:arg>
+          is merged with <clix:hyperspec
+          link='v_defaul.htm'>*default-pathname-defaults*</clix:hyperspec>,
+          so random pathnames relative to that directory can be
+          generated by not specifying a directory in
+          <clix:arg>template</clix:arg>.
+        </p>
+        <p>
+          <clix:arg>generate-random-string</clix:arg> can be passed to
+          override the default function that generates the random name
+          component.  It should return a random string consisting of
+          characters that are permitted in a pathname (logical or
+          physical, depending on <clix:arg>template</clix:arg>).
+        </p>
+        <p>
+          The name of the temporary file can be accessed calling the
+          <clix:hyperspec link='f_pn.htm'>pathname</clix:hyperspec>
+          function on <clix:arg>stream</clix:arg>.  For convenience,
+          the temporary file is opened on the physical pathname,
+          i.e. if the <clix:arg>template</clix:arg> designate a
+          logical pathname the translation to a physical pathname is
+          performed before opening the stream.
+        </p>
+        <p>
+          In order to create a unique file name,
+          <clix:ref>open-temporary</clix:ref> may loop internally up
+          to <clix:arg>max-tries</clix:arg> times before giving up and
+          signalling a
+          <clix:ref>cannot-create-temporary-file</clix:ref> condition.
+        </p>
+        <p>
+          Any unrecognized keyword arguments are passed to the call to
+          <clix:hyperspec link="f_open.htm">open</clix:hyperspec>.
+        </p>
+      </clix:description>
+    </clix:function>
+    <clix:function macro='true' name='with-output-to-temporary-file'>
+      <clix:lambda-list>(stream &amp;rest args) &amp;body body</clix:lambda-list>
+      <clix:returns>pathname</clix:returns>
+      <clix:description>
+        Create a temporary file using
+        <clix:ref>open-temporary</clix:ref> with
+        <clix:arg>args</clix:arg> and run <clix:arg>body</clix:arg>
+        with <clix:arg>stream</clix:arg> bound to the temporary file
+        stream.  Returns the pathname of the file that has been
+        created.  See <clix:ref>open-temporary</clix:ref> for
+        permitted options.
+      </clix:description>
+    </clix:function>
+    <clix:function macro='true' name='with-open-temporary-file'>
+      <clix:lambda-list>(stream &amp;rest args &amp;key keep &amp;allow-other-keys) &amp;body body</clix:lambda-list>
+      <clix:returns>values</clix:returns>
+      <clix:description>
+        Create a temporary file using
+        <clix:ref>open-temporary</clix:ref> with
+        <clix:arg>args</clix:arg> and run <clix:arg>body</clix:arg>
+        with <clix:arg>stream</clix:arg> bound to the temporary file
+        stream.  Returns the values returned by
+        <clix:arg>body</clix:arg>.  By default, the file is deleted
+        when <clix:arg>body</clix:arg> is exited. If a true value is
+        passed in <clix:arg>keep</clix:arg>, the file is not deleted
+        when the body is exited.  See
+        <clix:ref>open-temporary</clix:ref> for more permitted
+        options.
+      </clix:description>
+    </clix:function>
+    <clix:special-variable name='*default-template*'>
+      <clix:description>
+        This variable can be set to a string representing the desired
+        default template for temporary file name generation.  See
+        <clix:ref>open-temporary</clix:ref> for a description of the
+        template string format.
+      </clix:description>
+    </clix:special-variable>
+    <clix:condition name='cannot-create-temporary-file'>
+      <clix:description>
+        Signalled when an attempt to create unique temporary file name
+        failed after the established number of retries.
+      </clix:description>
+    </clix:condition>
+    <clix:condition name='invalid-temporary-pathname-template'>
+      <clix:description>
+        Signalled when the <clix:arg>template</clix:arg> argument to
+        <clix:ref>open-temporary</clix:ref> does not contain a valid
+        template string.  The template string must contain a percent
+        sign, which is replaced by the generated random string to
+        yield the filename.
+      </clix:description>
+    </clix:condition>
+    <clix:condition name='missing-temp-environment-variable'>
+      <clix:description>
+        (Windows only) Signalled when the TEMP environment variable is
+        not set.
+      </clix:description>
+    </clix:condition>
+    <clix:logical-pathname-host name='temporary-files'>
+      <clix:description>
+        This logical pathname host defines where temporary files are
+        stored by default.  It is initialized in a suitable system
+        specific fashion: On Unix and Unix-like systems, the directory
+        specified in the TMPDIR environment variable is used.  If that
+        variable is not set, /tmp is used as the default.  On Windows,
+        the directory specified in the TEMP environment variable is
+        used.  If it is not set, a
+        <clix:ref>missing-temp-environment-variable</clix:ref> error
+        is signalled.
+      </clix:description>
+    </clix:logical-pathname-host>
+  </clix:chapter>
+  <clix:chapter name='license' title='License'>
+<pre>Copyright (C) 2012 Hans Huebner
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
+  </clix:chapter>
+</clix:documentation>

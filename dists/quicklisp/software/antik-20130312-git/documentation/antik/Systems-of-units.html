@@ -1,0 +1,107 @@
+<html lang="en">
+<head>
+<title>Systems of units - Antik Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Antik Manual">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Physical-dimension.html#Physical-dimension" title="Physical dimension">
+<link rel="prev" href="Dimensions.html#Dimensions" title="Dimensions">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 2009, 2010, 2011 Liam M. Healy-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Systems-of-units"></a>
+<p>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Dimensions.html#Dimensions">Dimensions</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Physical-dimension.html#Physical-dimension">Physical dimension</a>
+<hr>
+</div>
+
+<h4 class="subsection">5.3.4 Systems of units</h4>
+
+<p>A <dfn>system of units</dfn> is a set of units, one for each of the physical dimensions that Antik can handle.  A system of units is needed by Antik for printing output and in special cases for converting physical quantities that have a physical dimension defined (e.g. length), but no units.  The system of units defined by
+<code>*system-of-units*</code> is used to determine the units in which the output is printed.  There are pre-defined several systems of units, <code>*siu*</code>, <code>*englishu*</code>, <code>*cgsu*</code>:
+<pre class="example">     ANTIK-USER&gt; (defparameter *length1* #_10_m)
+     *LENGTH1*
+     ANTIK-USER&gt; *length1*
+     #_10.000000000000000_m
+     ANTIK-USER&gt; (setf *system-of-units* *englishu*)
+     (((1 0 0 0 0 0 0 0 0) . FOOT) ((0 0 0 0 0 0 0 0 1) . RADIAN)
+      ((0 0 1 0 0 0 0 0 0) . SLUG) ((0 1 0 0 0 0 0 0 0) . SECOND)
+      ((1 -2 1 0 0 0 0 0 0) . POUND-FORCE) ((2 -3 1 0 0 0 0 0 0) . HORSEPOWER)
+      ((2 -2 1 0 0 0 0 0 0) . FOOT-POUND)
+      ((-1 -2 1 0 0 0 0 0 0) . POUNDS-PER-SQUARE-INCH))
+     ANTIK-USER&gt; *length1*
+     #_32.808398950131235_ft
+</pre>
+   <p>So by setting the system of units, you can convert values as needed,
+<pre class="example">     ANTIK-USER&gt; (setf *system-of-units* *siu*)
+     ANTIK-USER&gt; #_12_feet
+     #_3.657600000000000d0_m
+     ANTIK-USER&gt; (setf *system-of-units* *englishu*)
+     ANTIK-USER&gt; #_3_m
+     #_9.842519685039370d0_ft
+</pre>
+   <p>A new system of units may be defined with <code>define-sysunits</code>.  One need not define all physical dimensions, but if a unit is needed for a particular dimension and it's not defined, an error will be signalled.  For convenience, a system of units may be defined by alteration of an existing system of units.  For example, suppose that you wish to have a system of units that is like SI except that lengths are measured in km instead of meters.  This will define such a system:
+<pre class="example">     (define-sysunits *kmu* (km) *siu* "Kilometer system.")
+</pre>
+   <p>To set the default system of units, use <code>set-default-sysunits</code>.  To define a symbol macro to set a default system of units, use <code>setsys</code>.  The SI system is the initial default system of units.  It may be reset as the system of units with the symbol macro <code>si</code>.
+
+   <p>For formatted output of angles, the units (degrees or radians) may be set with the nf option <code>:degrees</code>, so the system of units may be maintained whether degrees or radians are desired on output.
+
+<div class="defun">
+&mdash; Macro: <b>antik:define-sysunits</b><var> system-name units &amp;optional base-sysunits docstring<a name="index-antik_003adefine_002dsysunits-336"></a></var><br>
+<blockquote><p><a name="index-antik_003adefine_002dsysunits-337"></a>Make a system of units with the given name and units, optionally
+   agumenting the existing system of units base-sysunits. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: <b>antik:set-default-sysunits</b><var> sysunits &amp;rest additional-units<a name="index-antik_003aset_002ddefault_002dsysunits-338"></a></var><br>
+<blockquote><p><a name="index-antik_003aset_002ddefault_002dsysunits-339"></a>Set the default system of units to the specified system,
+   possibly augmenting it with other units.  additional-units
+    may be <code>nil</code> to augment the current default system. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Macro: <b>antik:setsys</b><var> symbol sysunits &amp;rest additional-units<a name="index-antik_003asetsys-340"></a></var><br>
+<blockquote><p><a name="index-antik_003asetsys-341"></a>Set the symbol macro symbol to make the system of units sysunits default. 
+   additional-units may be useform{NIL} to augment the current default system. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Variable: <b>antik:*system-of-units*</b><var><a name="index-antik_003a_002asystem_002dof_002dunits_002a-342"></a></var><br>
+<blockquote><p><a name="index-antik_003a_002asystem_002dof_002dunits_002a-343"></a>Default system of units used by pqval. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Variable: <b>antik:*siu*</b><var><a name="index-antik_003a_002asiu_002a-344"></a></var><br>
+<blockquote><p><a name="index-antik_003a_002asiu_002a-345"></a>Systeme internationale system of units. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Variable: <b>antik:*englishu*</b><var><a name="index-antik_003a_002aenglishu_002a-346"></a></var><br>
+<blockquote><p><a name="index-antik_003a_002aenglishu_002a-347"></a>The English system of units. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Variable: <b>antik:*cgsu*</b><var><a name="index-antik_003a_002acgsu_002a-348"></a></var><br>
+<blockquote><p><a name="index-antik_003a_002acgsu_002a-349"></a>The <code>cgs</code> system of units. 
+</p></blockquote></div>
+
+   </body></html>
+

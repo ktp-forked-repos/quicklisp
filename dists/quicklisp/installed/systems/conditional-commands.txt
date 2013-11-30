@@ -1,0 +1,1 @@
+dists/quicklisp/software/mcclim-20130312-cvs/Extensions/conditional-commands/conditional-commands.asd

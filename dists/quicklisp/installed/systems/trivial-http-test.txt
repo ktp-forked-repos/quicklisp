@@ -1,0 +1,1 @@
+dists/quicklisp/software/trivial-http-20110219-http/trivial-http-test.asd

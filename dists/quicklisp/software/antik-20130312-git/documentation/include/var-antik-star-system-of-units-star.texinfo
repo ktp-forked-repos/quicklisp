@@ -1,0 +1,4 @@
+@defvr {Variable} {antik:*system-of-units*}
+@vindex antik:*system-of-units*
+Default system of units used by pqval.
+@end defvr

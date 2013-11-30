@@ -1,0 +1,4 @@
+lisp-implementation-type: CMU Common Lisp
+lisp-implementation-version: 19f (19F)
+machine-type: X86
+machine-version: X86

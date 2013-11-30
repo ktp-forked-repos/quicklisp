@@ -1,0 +1,5 @@
+repo: 9e16087760b8f42e78d993e40b686477c256898d
+node: 2edcbd9588614383a14c08e4b64b114c496dd45e
+branch: default
+latesttag: F2CL-2009-01-08
+latesttagdistance: 96

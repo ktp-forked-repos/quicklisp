@@ -1,0 +1,1 @@
+dists/quicklisp/software/beirc-20101107-cvs/beirc.asd

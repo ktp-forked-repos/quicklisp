@@ -1,0 +1,1 @@
+dists/quicklisp/software/lispbuilder-20130312-svn/lispbuilder-sdl-mixer/lispbuilder-sdl-mixer-cffi.asd

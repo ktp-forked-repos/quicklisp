@@ -1,0 +1,1 @@
+dists/quicklisp/software/cl-heredoc-20101006-git/cl-heredoc.asd

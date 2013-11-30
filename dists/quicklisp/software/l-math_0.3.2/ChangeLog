@@ -1,0 +1,292 @@
+2010-05-20  Rudy Neeser  <rudy.neeser@gmail.com>
+
+	* l-math.asd (:l-math): Version bump.
+
+	* vector.lisp (x,y,z,w): Ensure that the setf-expanders for these
+	forms coerce the new value to a double.
+
+	* matrix.lisp (matrix-elt): Ensured that new elements are coerced
+	to double in the setf-expander.
+
+	* vector.lisp (elt): Coerces the new value to a double in the
+	setf-expander.
+	(initialise-data): Ensure that the vector's elements are
+	initialised and set to double.
+	(make-vector): Ensure the the initial-elements are coerced to a
+	double.
+
+	* matrix.lisp (initialise-data): Ensure that the matrix elements
+	are initialised, and that the matrix is an appropriate type.
+
+	* generics.lisp (equivalent): Added an IGNORE statement to fix a
+	warning in CLISP
+
+2010-01-30  Rudy Neeser  <rudy.neeser@gmail.com>
+
+	* LICENSE: Updated to ensure that the license is "GPL, version 3,
+	and later versions". This was originally intended, and is is the
+	text in each individual source file.
+
+	* README: Some minor updates relating to how the LICENSE is
+	explained.
+
+2010-01-27  Rudy Neeser  <rudy.neeser@gmail.com>
+
+	* matrix.lisp (matrix=): Added a function to compare matrix
+	objects.
+	(dimension): Added an implementation for MATRIX objects.
+
+	* generics.lisp (copy): Added an implementation that copies lists.
+	(equivalent): Added a generic function to test for equivalence
+	between two objects.
+
+	* vector.lisp (dimension): Renamed LENGTH to DIMENSION.
+	(length): Created a new LENGTH function that is an alias to
+	DIMENSION.
+	(negate!): Added this for lists.
+
+2010-01-26  Rudy Neeser  <rudy.neeser@gmail.com>
+
+	* COPYING: Added a copy of the GPLv3.
+
+	* LICENSE: Added the beginnings of a file discussing licensing.
+
+	* README: Added the beginnings of a README file.
+
+	* vector-operations.lisp (dot-product): Dot product can now
+	operate on lists.
+	(euclidean-distance): Updated to work with lists.
+
+2010-01-22  Rudy Neeser  <rudy.neeser@gmail.com>
+
+	* vector.lisp (normalise): Provided a version that operates on
+	lists.
+	(normalise!): Provided a version that operates on lists.
+
+2009-12-18  Rudy Neeser  <rudy.neeser@gmail.com>
+
+	* package.lisp (#:l-math): Exported  *equivalence-tolerance*.
+
+	* tests.lisp (test-nonzero): Updated to
+	use *equivalence-tolerance*.
+
+	* vector.lisp (vector=): Updated to use *equivalence-tolerance*.
+
+	* generics.lisp (*equivalence-tolerance*): Added a variable that
+	defines how similar objects should be before they are considered
+	equal.
+
+2009-12-16  Rudy Neeser  <rudy.neeser@gmail.com>
+
+	* vector.lisp (vector=): Modifed to allow lists.
+
+	* matrix.lisp (matrix): Changed precision to double-float.
+
+	* vector.lisp (vector): Changed precision to double-float.
+
+	* vector-operations.lisp (angle-between): Increased precision in
+	this function to use double-floats. Now the angle between 90
+	degree vectors is reported as exactly 90 degrees.
+
+2009-12-15  Rudy Neeser  <rudy.neeser@gmail.com>
+
+	* vector.lisp (norm): Added a version of NORM to operate on lists.
+
+	* tests.lisp (test-nonzero): A test for methods to easily signal a
+	condition when its argument has a zero norm.
+
+	* conditions.lisp (zero-norm-error): Added a condition for
+	singaling when a vector argument is zero.
+
+	* vector-operations.lisp (angle-between): Added a function to
+	return the angle between two vectors.
+
+2009-11-04  Rudy Neeser  <rudy.neeser@gmail.com>
+
+	* vector.lisp (to-vector): Speed up TO-VECTOR by falling through
+	if the asked for dimension is the same as that of the given
+	object.
+
+	* matrix.lisp (matrix): Updated the matrix to not store row and
+	column information separately. Added separate MATRIX-ROWS and
+	MATRIX-COLS methods to return these values.
+
+	* vector.lisp (vector): Added an :initarg and :type for the vector
+	DATA slot.
+
+	* matrix.lisp (make-load-form): Created a method for serialising
+	matrix object.
+
+	* vector.lisp (vector): Added a documentation string.
+	(make-load-form): Created a method for serialising vector objects.
+
+2009-09-11  Rudy Neeser  <rudy.neeser@gmail.com>
+
+	* vector.lisp (elt): Returns the element of a list, as though it
+	were an array.
+
+2009-09-10  Rudy Neeser  <rudy.neeser@gmail.com>
+
+	* interpolate.lisp (between): Added a method to calculate the
+	point between two vectors.
+	(linear-interpolation): Modified so that it accepts lists as
+	arguments as well.
+
+	* vector.lisp (to-vector): Added a key to specify the dimension of
+	the vector to transform the data to.
+
+2009-09-07  Rudy Neeser  <rudy.neeser@gmail.com>
+
+	* operations.lisp: Added type information when signalling
+	conditions of type OPERATION-NOT-SUPPORTED to give more
+	information to callers of c+, c-, c* and c/
+
+	* conditions.lisp (operation-not-supported): Updated the condition
+	to be able to supply extra information as to why the operation
+	failed.
+
+2009-09-02  Rudy Neeser  <rudy.neeser@gmail.com>
+
+	* vector.lisp (negate): Added a method to return the additive
+	inverse of a list.
+
+	* operations.lisp: Added addition, subtraction, multiplication and
+	division operations on lists, treating them as vectors. Also
+	includes a mechanic to cast lists up to vectors when required.
+
+	* operations.lisp (create-list-operation-method): Added a macro to
+	define vector operations, such as addition and subtraction, on
+	lists.
+
+	* tests.lisp (test-dimensions): Added a test to test the
+	dimensions of lists in various operations.
+
+	* conditions.lisp (operation-not-supported): Fixed a bug that
+	stopped this condition from being reported.
+
+2009-05-20  Rudy Neeser  <rudy.neeser@gmail.com>
+
+	* package.lisp (#:create-rotation-from-view-to-view): Exported the
+	symbol.
+	
+	* rotations.lisp (create-rotation-from-view-to-view): Creates a
+	rotation matrix that will rotate one vector on to another.
+
+	* package.lisp (#:create-rotation-from-view): Exported
+	CREATE-ROTATION-FROM-VIEW.
+
+	* rotations.lisp (fill-row): A non-exported macro that allows for
+	filling in rows of a matrix while constructing one.
+	(create-rotation-from-view): A new function that creates rotation
+	matrices given a view direction and a global up vector.
+
+	* package.lisp (#:matrix-elt): Added MATRIX-ELT to the list of
+	exported package symbols.
+
+	* vector.lisp (print-object): Updated to print vectors using only
+	3 places after the decimal point.
+
+	* matrix.lisp (print-object): updated to print matrices using only
+	3 places after the decimal point.
+
+2009-04-20  Rudy Neeser  <rudy.neeser@gmail.com>
+
+	* vector.lisp (to-vector): Created a generic function to convert
+	objects of various types to vectors.
+	(to-vector): Created a method that converts vectors into vectors. 
+	(to-vector): Created a method to convert lists into vectors.
+
+2009-04-06  Rudy Neeser  <rudy.neeser@gmail.com>
+
+	* vector.lisp (normalise!): Put in a test to ensure that we don't
+	attempt to normalise vectors of length 0.
+	(normalise): As above: put in a test to ensure that we don't
+	attempt to normalise vectors of length 0.
+
+2009-03-05  Rudy Neeser  <rudy.neeser@gmail.com>
+
+	* vector.lisp (length): Added a way to tell the length of a vector
+	represented as a list.
+
+2009-03-04  Rudy Neeser  <rudy.neeser@gmail.com>
+
+	* vector.lisp (x): Added a method that will act on lists, as FIRST
+	does.
+	(setf x): An appropriate setf to work with lists.
+	(y): Added a method to act on lists, as x above.
+	(setf y): To set the y of a list.
+	(z): Added a method to act on lists, as x above.
+	(setf z): To set the z of a list.
+
+2009-02-26  Rudy Neeser  <rudy.neeser@gmail.com>
+
+	* vector-operations.lisp: New file where various vector operations
+	will be moved to and implemented.
+	(dot-product): Moved here from vector.lisp. A test to ensure that
+	the vectors are the correct dimensions has been added.
+	(cross-product): Moved here from vector.lisp. Tests for
+	dimensionality have been added.
+	(euclidean-distance): Calculates the euclidean distance between
+	two vectors.
+	(euclidean-distance): Provide a function to calculate the
+	euclidean distance between two numbers.
+
+2009-02-16  Rudy Neeser  <rudy.neeser@gmail.com>
+
+	* vector.lisp (cross-product): Added a function to calculate the
+	vector cross-product for 3-vectors.
+
+2009-02-10  Rudy Neeser  <rudy.neeser@gmail.com>
+
+	* matrix.lisp (transpose): Created a new generic function which
+	returns the transpose of a matric.
+
+2008-11-25  Rudy Neeser  <rudy.neeser@gmail.com>
+
+	* operations.lisp (-): Fixed a bug allowing unary lm:- to operate
+	as expected on VECTOR and MATRIX objects. In other words, it now
+	correctly negates these objects, rather than raising a condition.
+
+	* vector.lisp (copy): Provide an implementation for VECTORs.
+
+	* matrix.lisp (negate): Provide an implementation for MATRIX
+	objects.
+	(copy): Provide a method to copy MATRIX objects.
+
+	* generics.lisp (copy): Created a generic function that returns a
+	copy of the objects that it is given.
+
+	* matrix.lisp (negate!): Added an implementation of NEGATE! for
+	MATRIXs.
+
+	* vector.lisp (negate!): Added an implementation of the NEGATE!
+	generic function for VECTORs.
+
+	* generics.lisp (negate!): Added a destructive generic method
+	which returns the additive inverse of an item.
+
+	* vector.lisp (negate): Added an implementation of NEGATE for the
+	VECTOR class.
+
+	* generics.lisp (negate): Created a generic method which is meant
+	to return the additive inverse of an item. Provided an
+	implementation for all CL NUMBERs.
+
+	* rotations.lisp (create-rotation-matrix): Added a function which
+	can be given a rotation frame and will supply the necessary
+	rotation matrix to rotate into that frame.
+
+2008-08-10  Rudy Neeser  <rudy.neeser@gmail.com>
+
+	* interpolate.lisp: Add the file. Should contain all the various
+	interpolation methods that I will require.
+	(linear-interpolation): Interpolates between two points, using a
+	parameteric line equation.
+
+2008-08-08  Rudy Neeser  <rudy.neeser@gmail.com>
+
+	* vector.lisp (dot-product): Added a function to calculate the dot
+	product between two vectors.
+	(dot-product): Added tests to ensure that the vectors are of the
+	same length.
+

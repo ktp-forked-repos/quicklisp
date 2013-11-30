@@ -1,0 +1,4 @@
+lisp-implementation-type: XCL
+lisp-implementation-version: 0.0.0.291
+machine-type: X86
+machine-version: Intel(R) Pentium(R) Dual  CPU  E2160  @ 1.80GHz
